@@ -7,6 +7,8 @@ var last_time = 0;
 var pauses = [];
 var keys = [];
 
+var survey = [{"messages":["the first question"],"validation":"#the first"},{"messages":["the second question"],"validation":"#second"}];
+
 var text_unsure = ["Sorry, I don\'t get it.|Sorry, what do you mean?|Sorry, I don\'t understand.|Can you provide a valid answer?"];
 var text_more = ["OK. Can you tell me more?|Uh huh, and?|Good, go ahead.|Well... it will be better if you can tell me more.|Cool, go ahead please.|And?|Hmm... anything else?|Nice, anything more?|Nice! I want to know more :)|And then?|Come on, nothing else?|Un huh, and?"]
 var text_explain = ["Please explain what you think.|Can you explain why?|Could you please give me the reason?"];
