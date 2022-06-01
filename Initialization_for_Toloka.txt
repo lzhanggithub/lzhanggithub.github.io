@@ -28,7 +28,9 @@ https://qiusihang.github.io/ticktalkturk/style/client.css
 exports.Task = extend(TolokaHandlebarsTask, function (options) {
   TolokaHandlebarsTask.call(this, options);
   console.log(options['task']['input_values']['comment']);
-  window.onload = init();
+  console.log(options['task']['input_values']['usr_avatar']);
+  window.onload = init(options['task']['input_values']['comment'],options['task']['input_values']['usr_avatar'] );
+  console.log(options); //Initialize the survey
 }, {
   onRender: function() {
     // DOM element for task is formed (available via #getDOMElement()) 
@@ -51,4 +53,6 @@ function extend(ParentClass, constructorFunction, prototypeHash) {
   return constructorFunction;
 }
 
-window.onload = init(); //Initialize the survey
+// Input fields
+comment type : string
+usr_avatar type : string
