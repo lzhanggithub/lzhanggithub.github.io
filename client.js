@@ -80,7 +80,12 @@ var submit = function() {
     /*Do what you want to do with the survey results here!*/ 
 }
 
-
+var reutrn_results = function() {
+    if (answers.length >0 ){
+        return answers[0]
+    }
+    return "NO RESULT FOUND FOR THIS QUESTION"
+}
 
 //////////////////////////////////////////////////////////////
 
