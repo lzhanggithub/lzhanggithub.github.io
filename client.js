@@ -8,6 +8,7 @@ var pauses = [];
 var keys = [];
 
 // var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\""+url+"\"/>"]}]
+var survey = [{"messages":["the first question"],"validation":"#the first"}];
 
 var text_unsure = ["Sorry, I don\'t get it.|Sorry, what do you mean?|Sorry, I don\'t understand.|Can you provide a valid answer?"];
 var text_more = ["OK. Can you tell me more?|Uh huh, and?|Good, go ahead.|Well... it will be better if you can tell me more.|Cool, go ahead please.|And?|Hmm... anything else?|Nice, anything more?|Nice! I want to know more :)|And then?|Come on, nothing else?|Un huh, and?"]
@@ -59,7 +60,10 @@ var survey_validate = function(input) {
 var survey_next_question = function(url) {
     survey_qid += 1;
 //     if ( survey_qid >= survey.length ) return "";
-    return ["<img style=\"max-width:500px;width:100%\" src=\""+url+"\"/>"];
+//     return ["<img style=\"max-width:500px;width:100%\" src=\""+url+"\"/>"];
+    if ( survey_qid >= survey.length ) return "";
+    console.log(survey[survey_qid].messages)
+    return survey[survey_qid].messages;
 };
 
 var survey_repeat_question = function() {
