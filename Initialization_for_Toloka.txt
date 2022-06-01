@@ -27,6 +27,8 @@ https://qiusihang.github.io/ticktalkturk/style/client.css
 
 exports.Task = extend(TolokaHandlebarsTask, function (options) {
   TolokaHandlebarsTask.call(this, options);
+  console.log(options['task']['input_values']['comment']);
+  window.onload = init();
 }, {
   onRender: function() {
     // DOM element for task is formed (available via #getDOMElement()) 
