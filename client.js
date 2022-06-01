@@ -24,7 +24,8 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
         answers[survey_qid] = message;
         if (survey_qid < survey.length - 1) chatbot.talk(survey_next_question());
         else {
-            chatbot.talk(["You have completed the task! Thank you for your participation.","Bye!"]);
+            chatbot.talk(["You have completed the task! "]);
+            submit();
             task_completed = true;
             document.getElementById("submit").style.display = "block";
             document.getElementById("message").disabled = true;
