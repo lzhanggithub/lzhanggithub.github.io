@@ -115,9 +115,16 @@ var submit = function() {
     /*Do what you want to do with the survey results here!*/ 
 }
 
-var return_results_fake_news = function() {
+var return_results_fake_news_label = function() {
     if (answers.length > 0) {
-        return answers
+        return answers[0]
+    }
+    return "NO RESULTS FOR THIS QUESTION"
+}
+
+var return_results_fake_news_rationale = function() {
+    if (answers.length > 0) {
+        return answers[1]
     }
     return "NO RESULTS FOR THIS QUESTION"
 }
