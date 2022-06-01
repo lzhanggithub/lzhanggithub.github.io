@@ -72,8 +72,11 @@ var survey_repeat_question = function() {
     return text_unsure.concat(survey[survey_qid].messages);
 };
 
-var submit = function() {
-    // Do what you want to do here!
+
+var submit = function() { 
+    var res = {answers: answers}; 
+    console.log(res); 
+    /*Do what you want to do with the survey results here!*/ 
 }
 
 
