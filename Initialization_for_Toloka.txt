@@ -27,14 +27,26 @@ https://qiusihang.github.io/ticktalkturk/style/client.css
 
 exports.Task = extend(TolokaHandlebarsTask, function (options) {
   TolokaHandlebarsTask.call(this, options);
-  console.log(options['task']['input_values']['comment']);
-  console.log(options['task']['input_values']['usr_avatar']);
-  window.onload = init(options['task']['input_values']['comment'],options['task']['input_values']['usr_avatar'] );
-  console.log(options); //Initialize the survey
+//   console.log(options['task']['input_values']['comment']);
+//   console.log(options['task']['input_values']['usr_avatar']);
+  window.onload = init(options['task']['input_values']['comment'],options['task']['input_values']['usr_avatar']);
+//   console.log(options); //Initialize the survey
 }, {
   onRender: function() {
     // DOM element for task is formed (available via #getDOMElement()) 
   },
+  validate: function(solution) {
+        var errors = null;
+
+        // If no words are selected, we show an error message.
+        var res = reutrn_results();
+        this.setSolutionOutputValue("quality",res);
+        console.log(solution);
+        submit();
+
+        return errors || TolokaHandlebarsTask.prototype.validate.call(this, solution);
+    }
+,
   onDestroy: function() {
     // Task is completed. Global resources can be released (if used)
   }
@@ -52,6 +64,8 @@ function extend(ParentClass, constructorFunction, prototypeHash) {
   }
   return constructorFunction;
 }
+
+
 
 // Input fields
 comment type : string
