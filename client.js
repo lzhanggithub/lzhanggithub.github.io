@@ -7,7 +7,7 @@ var last_time = 0;
 var pauses = [];
 var keys = [];
 
-var survey = [{"messages":["the first question"],"validation":"#the first"},{"messages":["the second question"],"validation":"#second"}];
+// var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\""+url+"\"/>"]}]
 
 var text_unsure = ["Sorry, I don\'t get it.|Sorry, what do you mean?|Sorry, I don\'t understand.|Can you provide a valid answer?"];
 var text_more = ["OK. Can you tell me more?|Uh huh, and?|Good, go ahead.|Well... it will be better if you can tell me more.|Cool, go ahead please.|And?|Hmm... anything else?|Nice, anything more?|Nice! I want to know more :)|And then?|Come on, nothing else?|Un huh, and?"]
@@ -32,8 +32,8 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 },show_message = function(message){bubble(message);});
 
 
-var init = function() {
-    chatbot.talk(survey_next_question());
+var init = function(url) {
+    chatbot.talk(survey_next_question(url));
 };
 
 var survey_qid = -1;
@@ -56,10 +56,10 @@ var survey_validate = function(input) {
     } else return true;
 };
 
-var survey_next_question = function() {
+var survey_next_question = function(url) {
     survey_qid += 1;
-    if ( survey_qid >= survey.length ) return "";
-    return survey[survey_qid].messages;
+//     if ( survey_qid >= survey.length ) return "";
+    return ["<img style=\"max-width:500px;width:100%\" src=\""+url+"\"/>"];
 };
 
 var survey_repeat_question = function() {
