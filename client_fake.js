@@ -117,7 +117,7 @@ var submit = function() {
 
 var return_results_fake_news = function() {
     if (answers.length > 0) {
-        return answers[0]
+        return answers
     }
     return "NO RESULTS FOR THIS QUESTION"
 }
