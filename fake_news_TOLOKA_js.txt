@@ -1,0 +1,46 @@
+exports.Task = extend(TolokaHandlebarsTask, function (options) {
+  TolokaHandlebarsTask.call(this, options);
+//   console.log(options['task']['input_values']['comment']);
+//   console.log(options['task']['input_values']['usr_avatar']);
+  window.onload = init_fake_news(
+    options['task']['input_values']['usr_avatar'],
+    options['task']['input_values']['title'],
+    options['task']['input_values']['article']);
+//   console.log(options); //Initialize the survey
+}, {
+  onRender: function() {
+    // DOM element for task is formed (available via #getDOMElement()) 
+  },
+  validate: function(solution) {
+        var errors = null;
+
+        // If no words are selected, we show an error message.
+        var res = return_results_fake_news_label();
+        var res1 = return_results_fake_news_rationale()
+        console.log(res);
+        console.log(res1);
+        this.setSolutionOutputValue("label",res);
+        this.setSolutionOutputValue("rationale",res1);
+        // console.log(solution);
+        // submit();
+
+        return errors || TolokaHandlebarsTask.prototype.validate.call(this, solution);
+    }
+,
+  onDestroy: function() {
+    // Task is completed. Global resources can be released (if used)
+  }
+
+});
+
+function extend(ParentClass, constructorFunction, prototypeHash) {
+  constructorFunction = constructorFunction || function () {};
+  prototypeHash = prototypeHash || {};
+  if (ParentClass) {
+    constructorFunction.prototype = Object.create(ParentClass.prototype);
+  }
+  for (var i in prototypeHash) {
+    constructorFunction.prototype[i] = prototypeHash[i];
+  }
+  return constructorFunction;
+}
