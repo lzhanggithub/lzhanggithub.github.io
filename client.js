@@ -7,6 +7,7 @@ var last_time = 0;
 var pauses = [];
 var keys = [];
 
+var user_image = "https://qiusihang.github.io/ticktalkturk/res/default.png";
 // var survey = [{"messages":["the first question"],"validation":"#the first"},{"messages":["the second question"],"validation":"#second"}];
 var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\"https://media.4-paws.org/1/4/e/a/14ea44c5fc3e0aa54688ec51ee5c8b1396d7f54c/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg\"/>"]}];
 
@@ -33,7 +34,8 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 },show_message = function(message){bubble(message);});
 
 
-var init = function(url) {
+var init = function(url, usr_img) {
+    user_image = usr_img;
     chatbot.talk(survey_next_question(url));
 };
 
@@ -165,7 +167,7 @@ var checkbox_button = function(e) {
 }
 
 
-var user_image = "https://qiusihang.github.io/ticktalkturk/res/default.png";
+
 var chatbot_image = "https://qiusihang.github.io/ticktalkturk/res/chatbot.png";
 var profile_image = function(username) {
     if ( username == "__you__") {
