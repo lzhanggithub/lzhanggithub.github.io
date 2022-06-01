@@ -33,8 +33,8 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 },show_message = function(message){bubble(message);});
 
 
-var init = function() {
-    chatbot.talk(survey_next_question());
+var init = function(url) {
+    chatbot.talk(survey_next_question(url));
 };
 
 var survey_qid = -1;
@@ -57,11 +57,12 @@ var survey_validate = function(input) {
     } else return true;
 };
 
-var survey_next_question = function() {
+var survey_next_question = function(url) {
     survey_qid += 1;
     if ( survey_qid >= survey.length ) return "";
-    console.log(survey[survey_qid].messages);
-    return survey[survey_qid].messages;
+//     console.log(["<img style=\"max-width:500px;width:100%\" src=\""+url+"/>"]);
+//     console.log(survey[survey_qid].messages);
+    return ["<img style=\"max-width:500px;width:100%\" src=\""+url+"/>"];
 };
 
 var survey_repeat_question = function() {
