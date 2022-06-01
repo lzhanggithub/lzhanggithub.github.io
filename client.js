@@ -9,8 +9,7 @@ var keys = [];
 
 var user_image = "https://qiusihang.github.io/ticktalkturk/res/default.png";
 // var survey = [{"messages":["the first question"],"validation":"#the first"},{"messages":["the second question"],"validation":"#second"}];
-// var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\"https://media.4-paws.org/1/4/e/a/14ea44c5fc3e0aa54688ec51ee5c8b1396d7f54c/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg\"/>"]}];
-var survey = [];
+var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\"https://media.4-paws.org/1/4/e/a/14ea44c5fc3e0aa54688ec51ee5c8b1396d7f54c/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg\"/>"]}];
 
 var text_unsure = ["Sorry, I don\'t get it.|Sorry, what do you mean?|Sorry, I don\'t understand.|Can you provide a valid answer?"];
 var text_more = ["OK. Can you tell me more?|Uh huh, and?|Good, go ahead.|Well... it will be better if you can tell me more.|Cool, go ahead please.|And?|Hmm... anything else?|Nice, anything more?|Nice! I want to know more :)|And then?|Come on, nothing else?|Un huh, and?"]
@@ -43,20 +42,7 @@ var init = function(url, usr_img) {
 
 var init_fake_news = function(usr_img, title, article) {
     user_image = usr_img;
-    survey = [{
-        "messages": [
-            "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
-            "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
-            "Is the article real or fake?"
-        ],
-        "validation":
-            "#real#fake"},
-    {
-        "messages": [
-            "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
-        ]
-    }];
-    chatbot.talk(survey_fake_news());
+    chatbot.talk(survey_fake_news(title, article));
 };
 
 var survey_qid = -1;
@@ -88,20 +74,14 @@ var survey_next_question = function(url) {
     return ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"\"/>")];
 };
 
-// var survey_fake_news_old = function(title, article) {
-//     return [
-//         "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
-//         "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
-//         "Is the article real or fake?",
-//         "buttons:#real#fake",
-//         "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
-//     ];
-// }
-
-var survey_fake_news = function() {
-    survey_qid += 1;
-    if (survey_qid >= survey.length) return "";
-    return survey[survey_qid].messages;
+var survey_fake_news = function(title, article) {
+    return [
+        "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
+        "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
+        "Is the article real or fake?",
+        "buttons:#real#fake",
+        "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
+    ];
 }
 
 var survey_repeat_question = function() {
@@ -113,13 +93,6 @@ var submit = function() {
     var res = {answers: answers}; 
     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
-}
-
-var return_results_fake_news = function() {
-    if (answers.length > 0) {
-        return answers
-    }
-    return "NO RESULTS FOR THIS QUESTION"
 }
 
 var reutrn_results = function() {
