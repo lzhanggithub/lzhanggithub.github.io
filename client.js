@@ -60,9 +60,10 @@ var survey_validate = function(input) {
 var survey_next_question = function(url) {
     survey_qid += 1;
     if ( survey_qid >= survey.length ) return "";
-//     console.log(["<img style=\"max-width:500px;width:100%\" src=\""+url+"/>"]);
-//     console.log(survey[survey_qid].messages);
-    return ["<img style=\"max-width:500px;width:100%\" src=\""+url+"/>"];
+    ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url).concat("/>")];
+    console.log(["<img style=\"max-width:500px;width:100%\" src=\"".concat(url).concat("/>")]);
+    console.log(survey[survey_qid].messages);
+    return ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url).concat("/>")];
 };
 
 var survey_repeat_question = function() {
