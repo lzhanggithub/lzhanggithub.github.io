@@ -40,11 +40,6 @@ var init = function(url, usr_img) {
     chatbot.talk(survey_next_question(url));
 };
 
-var init_fake_news = function(usr_img, title, article) {
-    user_image = usr_img;
-    chatbot.talk(survey_fake_news(title, article));
-};
-
 var survey_qid = -1;
 var survey_validate = function(input) {
     var strip = function(text) {return text.toLowerCase().replace(/[\s.,\/#!$%\^&\*;:{}=\-_'"`~()]/g, "");};
@@ -73,16 +68,6 @@ var survey_next_question = function(url) {
     console.log(survey[survey_qid].messages);
     return ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"\"/>")];
 };
-
-var survey_fake_news = function(title, article) {
-    return [
-        "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
-        "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
-        "Is the article real or fake?",
-        "buttons:#real#fake",
-        "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
-    ];
-}
 
 var survey_repeat_question = function() {
     return text_unsure.concat(survey[survey_qid].messages);
