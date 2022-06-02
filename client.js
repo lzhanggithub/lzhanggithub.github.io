@@ -36,6 +36,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 
 
 var init = function(url, usr_img) {
+    task_completed = false;
     user_image = usr_img;
     chatbot.talk(survey_next_question(url));
 };
