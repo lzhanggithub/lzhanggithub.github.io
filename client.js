@@ -19,17 +19,22 @@ var text_explain = ["Please explain what you think.|Can you explain why?|Could y
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {
     // this function is used for processing users message and then decide how chatbot should reply.
     // you should use function chatbot.talk(["text1","text2"]) to reply.
-    if ( task_completed ) { chatbot.talk(["😀"]); return; }
+//     if ( task_completed ) { chatbot.talk(["😀"]); return; }
     if ( survey_validate(message) ) {
         answers[survey_qid] = message;
-        if (!task_completed) chatbot.talk(survey_next_question());
-        else {
-            chatbot.talk(["You have completed this task! "]);
+        console.log(task_completed);
+        console.log(message);
+        console.log(answers)
+        console.log("from take turn function");
+        
+//         if (!task_completed) chatbot.talk(survey_next_question());
+//         else {
+            chatbot.talk(["You have completed this task! now click submit to the next task "]);
             submit();
             task_completed = true;
 //             document.getElementById("submit").style.display = "block";
 //             document.getElementById("message").disabled = true;
-        }
+//         }
     }
     else chatbot.talk(survey_repeat_question());
 },show_message = function(message){bubble(message);});
@@ -63,8 +68,10 @@ var survey_validate = function(input) {
     } else return true;
 };
 
-var survey_next_question = function(url) {
+var survey_next_question = function() {
     survey_qid += 1;
+    console.log(survey_qid);
+    console.log("from survey next q");
 //     if ( survey_qid >= survey.length ) return "";
 //     ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")];
 //     console.log(["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")]);
