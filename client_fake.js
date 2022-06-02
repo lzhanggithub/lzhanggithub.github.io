@@ -41,7 +41,7 @@ var init = function(url, usr_img) {
     chatbot.talk(survey_next_question(url));
 };
 
-var init_fake_news = function(usr_img, title, article) {
+var init_fake_news = function(usr_img, title, article, true_label) {
     user_image = usr_img;
     survey = [{
         "messages": [
@@ -113,6 +113,9 @@ var submit = function() {
     var res = {answers: answers}; 
     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
+
+    // Do next question
+    chatbot.talk(survey_fake_news());
 }
 
 var return_results_fake_news_label = function() {
