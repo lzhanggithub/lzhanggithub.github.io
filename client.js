@@ -22,13 +22,13 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
     if ( task_completed ) { chatbot.talk(["😀"]); return; }
     if ( survey_validate(message) ) {
         answers[survey_qid] = message;
-        if (survey_qid < survey.length - 1) chatbot.talk(survey_next_question());
+        if (!task_completed) chatbot.talk(survey_next_question());
         else {
-            chatbot.talk(["You have completed the task! "]);
+            chatbot.talk(["You have completed this task! "]);
             submit();
             task_completed = true;
-            document.getElementById("submit").style.display = "block";
-            document.getElementById("message").disabled = true;
+//             document.getElementById("submit").style.display = "block";
+//             document.getElementById("message").disabled = true;
         }
     }
     else chatbot.talk(survey_repeat_question());
@@ -37,6 +37,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 
 var init = function(url, usr_img) {
     task_completed = false;
+//     document.getElementById("message").disabled = false;
     user_image = usr_img;
     chatbot.talk(survey_next_question(url));
 };
@@ -62,11 +63,11 @@ var survey_validate = function(input) {
 };
 
 var survey_next_question = function(url) {
-    survey_qid += 1;
-    if ( survey_qid >= survey.length ) return "";
-    ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")];
-    console.log(["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")]);
-    console.log(survey[survey_qid].messages);
+    survey_qid = 1;
+//     if ( survey_qid >= survey.length ) return "";
+//     ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")];
+//     console.log(["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")]);
+//     console.log(survey[survey_qid].messages);
     return ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"\"/>")];
 };
 
@@ -77,7 +78,8 @@ var survey_repeat_question = function() {
 
 var submit = function() { 
     var res = {answers: answers}; 
-    console.log(res); 
+    return answers;
+//     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
 }
 
