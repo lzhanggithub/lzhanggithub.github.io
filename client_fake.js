@@ -30,6 +30,10 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
             task_completed = true;
             document.getElementById("submit").style.display = "block";
             document.getElementById("message").disabled = true;
+
+            console.log("Hellp from chatbot after submit");
+            console.log("try run next question");
+            chatbot.talk(survey_fake_news());
         }
     }
     else chatbot.talk(survey_repeat_question());
@@ -114,27 +118,26 @@ var submit = function() {
     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
 
-    // Do next question
-    chatbot.talk(survey_fake_news());
+    console.log("HELLO FROM SUBMIT TEST FROM POOL PREVIEW"))
 }
 
 var return_results_fake_news_label = function() {
     if (answers.length > 0) {
-        return answers[0]
+        return answers[0];
     }
     return "NO RESULTS FOR THIS QUESTION"
 }
 
 var return_results_fake_news_rationale = function() {
     if (answers.length > 0) {
-        return answers[1]
+        return answers[1];
     }
     return "NO RESULTS FOR THIS QUESTION"
 }
 
 var reutrn_results = function() {
     if (answers.length >0 ){
-        return answers[0]
+        return answers[0];
     }
     return "NO RESULT FOUND FOR THIS QUESTION"
 }
