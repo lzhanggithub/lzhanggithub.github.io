@@ -64,7 +64,7 @@ var survey_validate = function(input) {
 };
 
 var survey_next_question = function(url) {
-    survey_qid = 1;
+    survey_qid += 1;
 //     if ( survey_qid >= survey.length ) return "";
 //     ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")];
 //     console.log(["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")]);
