@@ -8,6 +8,7 @@ var pauses = [];
 var keys = [];
 
 var user_image = "https://qiusihang.github.io/ticktalkturk/res/default.png";
+var captcha_url = ""
 // var survey = [{"messages":["the first question"],"validation":"#the first"},{"messages":["the second question"],"validation":"#second"}];
 var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\"https://media.4-paws.org/1/4/e/a/14ea44c5fc3e0aa54688ec51ee5c8b1396d7f54c/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg\"/>"]}];
 // var survey = "";
@@ -42,9 +43,8 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 
 var init = function(url, usr_img) {
     task_completed = false;
-//     document.getElementById("message").disabled = false;
     user_image = usr_img;
-    survey[0].messages = ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"\"/>")]
+    captcha_url = url;
     chatbot.talk(survey_next_question());
 };
 
@@ -72,11 +72,12 @@ var survey_next_question = function() {
     survey_qid += 1;
     console.log(survey_qid);
     console.log("from survey next q");
-//     if ( survey_qid >= survey.length ) return "";
+    if ( survey_qid >= survey.length ) return "";
 //     ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")];
 //     console.log(["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")]);
 //     console.log(survey[survey_qid].messages);
-    return survey;
+    survey[survey_qid].messages = ["<img style=\"max-width:500px;width:100%\" src=\"".concat(captcha_url,"\"/>")]
+    return survey[survey_qid].messages;
 };
 
 var survey_repeat_question = function() {
