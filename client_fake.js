@@ -31,9 +31,9 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
             document.getElementById("submit").style.display = "block";
             document.getElementById("message").disabled = true;
 
-            console.log("Hellp from chatbot after submit");
-            console.log("try run next question");
-            chatbot.talk(survey_fake_news());
+            // console.log("Hellp from chatbot after submit");
+            // console.log("try run next question");
+            // chatbot.talk(survey_fake_news());
         }
     }
     else chatbot.talk(survey_repeat_question());
