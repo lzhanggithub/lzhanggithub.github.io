@@ -118,7 +118,7 @@ var submit = function() {
     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
 
-    console.log("HELLO FROM SUBMIT TEST FROM POOL PREVIEW"))
+    console.log("HELLO FROM SUBMIT TEST FROM POOL PREVIEW");
 }
 
 var return_results_fake_news_label = function() {
