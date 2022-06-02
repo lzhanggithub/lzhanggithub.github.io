@@ -73,8 +73,9 @@ var survey_next_question = function() {
     console.log(survey_qid);
     console.log("from survey next q");
     if ( survey_qid >= survey.length ) return "";
-    survey[survey_qid].messages = ["<img style=\"max-width:500px;width:100%\" src=\"".concat(captcha_url,"\"/>")];
     console.log(survey);
+    survey[survey_qid].messages = ["<img style=\"max-width:500px;width:100%\" src=\"".concat(captcha_url,"\"/>")];
+    
     return ["<img style=\"max-width:500px;width:100%\" src=\"".concat(captcha_url,"\"/>")];
 };
 
