@@ -115,7 +115,7 @@ var submit = function() {
     /*Do what you want to do with the survey results here!*/ 
 
     console.log("HELLO FROM SUBMIT TEST FROM POOL PREVIEW 2");
-    // chatbot.talk(survey_fake_news());
+    chatbot.talk(survey_fake_news());
 }
 
 var return_results_fake_news_label = function() {
