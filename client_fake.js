@@ -145,8 +145,6 @@ var increment_progress = function() {
 }
 
 var submit = function() { 
-    increment_progress();
-
     var res = {answers: answers}; 
     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
