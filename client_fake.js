@@ -34,7 +34,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 
     if ( survey_validate(message)) {
         answers[survey_qid] = message
-        
+
         console.log(task_completed);
         console.log(message);
         console.log(answers)
@@ -125,8 +125,8 @@ var submit = function() {
     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
 
-    console.log("HELLO FROM SUBMIT TEST FROM POOL PREVIEW 2");
-    chatbot.talk(survey_fake_news());
+    return answers;
+
 }
 
 var return_results_fake_news_label = function() {
