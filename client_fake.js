@@ -120,8 +120,6 @@ var survey_repeat_question = function() {
 };
 
 var update_progress = function() {
-    console.log("hello from init --> update");
-
     var elem = document.getElementById("myBar");
     elem.style.width = (curr_task/total_tasks) * 100 + '%';
     elem.innerHTML = curr_task + '/' + total_tasks;
