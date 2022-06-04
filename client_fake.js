@@ -198,6 +198,7 @@ var loading = function() {              // show loading animation
     loading_cell = row.insertCell();
     loading_cell.innerHTML = "<div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div>";
     to_bottom();
+    update_progress();
 }
 
 var buttons_cell = document.createElement("div");
