@@ -150,14 +150,14 @@ var submit = function() {
 
 var return_results_fake_news_label = function() {
     if (answers.length > 0) {
-        return answers[0];
+        return answers[answers.length - 2];
     }
     return "NO RESULTS FOR THIS QUESTION"
 }
 
 var return_results_fake_news_rationale = function() {
     if (answers.length > 0) {
-        return answers[1];
+        return answers[answers.length - 1];
     }
     return "NO RESULTS FOR THIS QUESTION"
 }
