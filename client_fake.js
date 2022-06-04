@@ -57,19 +57,34 @@ var init = function(url, usr_img) {
 
 var init_fake_news = function(usr_img, title, article, true_label) {
     user_image = usr_img;
-    survey = [{
+    survey.append({
         "messages": [
             "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
             "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
             "Is the article real or fake?"
         ],
         "validation":
-            "#real#fake"},
-    {
+            "#real#fake"});
+
+    survey.append({
         "messages": [
             "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
         ]
-    }];
+    });
+            
+    // survey [{
+    //     "messages": [
+    //         "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
+    //         "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
+    //         "Is the article real or fake?"
+    //     ],
+    //     "validation":
+    //         "#real#fake"},
+    // {
+    //     "messages": [
+    //         "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
+    //     ]
+    // }];
     chatbot.talk(survey_fake_news());
 };
 
