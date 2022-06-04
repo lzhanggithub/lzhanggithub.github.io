@@ -32,7 +32,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
         if (survey_qid < survey.length - 1) chatbot.talk(survey_fake_news());
         else {
             chatbot.talk(["You have completed this task! now click submit to the next task "]);
-            submit();
+            //submit();
             task_completed = true;
         }
     }
@@ -120,12 +120,15 @@ var survey_repeat_question = function() {
 };
 
 var update_progress = function() {
+    console.log("hello from init --> update");
+
     var elem = document.getElementById("myBar");
     elem.style.width = (curr_task/total_tasks) * 100 + '%';
     elem.innerHTML = curr_task + '/' + total_tasks;
 }
 
 var increment_progress = function() {
+    console.log("hello from increment");
     // increment the progress bar
     var elem = document.getElementById("myBar");   
   
@@ -137,9 +140,13 @@ var increment_progress = function() {
     } else {
       console.log("done");
     }
+
+    console.log("curr_task: " + curr_task)
 }
 
 var submit = function() { 
+    increment_progress();
+    
     var res = {answers: answers}; 
     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
