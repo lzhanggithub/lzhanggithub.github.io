@@ -22,9 +22,6 @@ var text_explain = ["Please explain what you think.|Can you explain why?|Could y
 
 
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {
-    console.log("hello from init chatbot");
-    update_progress();
-
     if ( survey_validate(message)) {
         answers[survey_qid] = message
 
@@ -111,6 +108,9 @@ var survey_next_question = function(url) {
 };
 
 var survey_fake_news = function() {
+    console.log("hello from survey");
+    update_progress();
+
     survey_qid += 1;
     return survey[survey_qid].messages;
 }
