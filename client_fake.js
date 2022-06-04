@@ -46,9 +46,6 @@ var init = function(url, usr_img) {
 };
 
 var init_fake_news = function(usr_img, title, article, true_label) {
-    // Draw the progress bar
-    update_progress();
-
     // Set image
     user_image = usr_img;
     
@@ -146,7 +143,7 @@ var increment_progress = function() {
 
 var submit = function() { 
     increment_progress();
-    
+
     var res = {answers: answers}; 
     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
