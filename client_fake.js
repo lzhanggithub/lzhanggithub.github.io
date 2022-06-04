@@ -127,7 +127,7 @@ var update_progress = function() {
 
 var increment_progress = function() {
     console.log("hello from increment");
-    // increment the progress bar
+    // increment the progress bars
     var elem = document.getElementById("myBar");   
   
     if (curr_task < total_tasks) {
