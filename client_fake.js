@@ -113,12 +113,7 @@ var survey_repeat_question = function() {
     return text_unsure.concat(survey[survey_qid].messages);
 };
 
-
-var submit = function() { 
-    var res = {answers: answers}; 
-    console.log(res); 
-    /*Do what you want to do with the survey results here!*/ 
-
+var increment_progress = function() {
     // increment the progress bar
     var elem = document.getElementById("myBar");   
   
@@ -130,6 +125,12 @@ var submit = function() {
     } else {
       console.log("done");
     }
+}
+
+var submit = function() { 
+    var res = {answers: answers}; 
+    console.log(res); 
+    /*Do what you want to do with the survey results here!*/ 
 
     return answers;
 
