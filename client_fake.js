@@ -70,7 +70,8 @@ var init_fake_news = function(usr_img, title, article, true_label) {
     survey.push({
         "messages": [
             "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
-        ]
+        ],
+        "rationale_validation": 0
     });
             
     // survey [{
@@ -106,7 +107,15 @@ var survey_validate = function(input) {
             })
         });
         return flag;
+    } else if ("rationale_validation" in q) {
+        var words = input.split(' ');
+        if (words.length > 5) {
+            return true;
+        } else {
+            return false;
+        }
     } else return true;
+
 };
 
 var survey_next_question = function(url) {
