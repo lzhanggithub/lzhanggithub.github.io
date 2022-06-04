@@ -2,6 +2,10 @@ var userid = "";
 var answers = [];
 var task_completed = false;
 
+// progress bar vars
+var curr_task = 0;
+var total_tasks = 10;
+
 var start_time = 0;
 var last_time = 0;
 var pauses = [];
@@ -114,6 +118,18 @@ var submit = function() {
     var res = {answers: answers}; 
     console.log(res); 
     /*Do what you want to do with the survey results here!*/ 
+
+    // increment the progress bar
+    var elem = document.getElementById("myBar");   
+  
+    if (curr_task < total_tasks) {
+      curr_task+=1;
+      console.log(curr_task);
+      elem.style.width = (curr_task/total_tasks) * 100 + '%';
+      elem.innerHTML = curr_task + '/' + total_tasks;
+    } else {
+      console.log("done");
+    }
 
     return answers;
 
