@@ -39,9 +39,12 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
         console.log(message);
         console.log(answers)
 
-        chatbot.talk(["You have completed this task! now click submit to the next task "]);
-        submit();
-        task_completed = true;
+        if (survey_qid < survey.length - 1) chatbot.talk(survey_fake_news());
+        else {
+            chatbot.talk(["You have completed this task! now click submit to the next task "]);
+            submit();
+            task_completed = true;
+        }
     }
     else chatbot.talk(survey_repeat_question());
 },show_message = function(message){bubble(message);});
