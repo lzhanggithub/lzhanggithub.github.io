@@ -46,7 +46,7 @@ var init = function(url, usr_img) {
 };
 
 var init_fake_news = function(usr_img, title, article, true_label) {
-    // Set image
+    // Set imagee
     user_image = usr_img;
     
     
