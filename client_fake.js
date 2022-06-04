@@ -22,6 +22,8 @@ var text_explain = ["Please explain what you think.|Can you explain why?|Could y
 
 
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {
+    update_progress();
+    
     if ( survey_validate(message)) {
         answers[survey_qid] = message
 
