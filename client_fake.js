@@ -20,17 +20,28 @@ var text_explain = ["Please explain what you think.|Can you explain why?|Could y
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {
     // this function is used for processing users message and then decide how chatbot should reply.
     // you should use function chatbot.talk(["text1","text2"]) to reply.
-    if ( task_completed ) { chatbot.talk(["😀"]); return; }
-    if ( survey_validate(message) ) {
-        answers[survey_qid] = message;
-        if (survey_qid < survey.length - 1) chatbot.talk(survey_fake_news());
-        else {
-            chatbot.talk(["You have completed the task! "]);
-            submit();
-            task_completed = true;
-            document.getElementById("submit").style.display = "block";
-            document.getElementById("message").disabled = true;
-        }
+    // if ( task_completed ) { chatbot.talk(["😀"]); return; }
+    // if ( survey_validate(message) ) {
+    //     answers[survey_qid] = message;
+    //     if (survey_qid < survey.length - 1) chatbot.talk(survey_fake_news());
+    //     else {
+    //         chatbot.talk(["You have completed the task! "]);
+    //         submit();
+    //         task_completed = true;
+    //         document.getElementById("submit").style.display = "block";
+    //         document.getElementById("message").disabled = true;
+    //     }
+
+    if ( survey_validate(message)) {
+        answers[survey_qid] = message
+        
+        console.log(task_completed);
+        console.log(message);
+        console.log(answers)
+
+        chatbot.talk(["You have completed this task! now click submit to the next task "]);
+        submit();
+        task_completed = true;
     }
     else chatbot.talk(survey_repeat_question());
 },show_message = function(message){bubble(message);});
@@ -100,7 +111,7 @@ var survey_next_question = function(url) {
 
 var survey_fake_news = function() {
     survey_qid += 1;
-    if (survey_qid >= survey.length) return "";
+    // if (survey_qid >= survey.length) return "";
     return survey[survey_qid].messages;
 }
 
