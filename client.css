@@ -25,6 +25,20 @@
         -o-transform: translate(-50%, 0);
         transform: translate(-50%, 0);
     }
+
+    .w3-light-grey{
+      color:#000!important;
+      background-color:#f1f1f1!important
+    }
+
+    .w3-container{
+      padding:0.01em 16px
+    }
+
+    .w3-green{
+      color:#fff!important;
+      background-color:#4CAF50!important
+    }
     
     #container {
         position: absolute;
