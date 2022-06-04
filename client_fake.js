@@ -57,7 +57,7 @@ var init = function(url, usr_img) {
 
 var init_fake_news = function(usr_img, title, article, true_label) {
     user_image = usr_img;
-    survey.append({
+    survey.push({
         "messages": [
             "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
             "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
@@ -66,7 +66,7 @@ var init_fake_news = function(usr_img, title, article, true_label) {
         "validation":
             "#real#fake"});
 
-    survey.append({
+    survey.push({
         "messages": [
             "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
         ]
