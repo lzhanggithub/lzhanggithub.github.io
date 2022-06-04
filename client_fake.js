@@ -108,9 +108,6 @@ var survey_next_question = function(url) {
 };
 
 var survey_fake_news = function() {
-    console.log("hello from survey");
-    update_progress();
-
     survey_qid += 1;
     return survey[survey_qid].messages;
 }
