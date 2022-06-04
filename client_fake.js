@@ -57,6 +57,7 @@ var init = function(url, usr_img) {
 
 var init_fake_news = function(usr_img, title, article, true_label) {
     user_image = usr_img;
+    console.log("hello from init check");
     survey.push({
         "messages": [
             "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
