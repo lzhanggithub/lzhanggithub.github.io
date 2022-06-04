@@ -10,6 +10,21 @@
         /* background-image: url('https://qiusihang.github.io/ticktalkturk/style/pattern.png'); */
         background:#e6e6e6;
     }
+
+    #progress-bar{
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        width: 100%;
+        max-width: 1000px;
+    
+        left: 50%;
+        -webkit-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
+    }
     
     #container {
         position: absolute;
@@ -17,7 +32,7 @@
         bottom: 10px;
         width: 100%;
         max-width: 1000px;
-        margin-top:30px;
+        margin-top:50px;
     
         left: 50%;
         -webkit-transform: translate(-50%, 0);
