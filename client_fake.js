@@ -18,20 +18,6 @@ var text_explain = ["Please explain what you think.|Can you explain why?|Could y
 
 
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {
-    // this function is used for processing users message and then decide how chatbot should reply.
-    // you should use function chatbot.talk(["text1","text2"]) to reply.
-    // if ( task_completed ) { chatbot.talk(["😀"]); return; }
-    // if ( survey_validate(message) ) {
-    //     answers[survey_qid] = message;
-    //     if (survey_qid < survey.length - 1) chatbot.talk(survey_fake_news());
-    //     else {
-    //         chatbot.talk(["You have completed the task! "]);
-    //         submit();
-    //         task_completed = true;
-    //         document.getElementById("submit").style.display = "block";
-    //         document.getElementById("message").disabled = true;
-    //     }
-
     if ( survey_validate(message)) {
         answers[survey_qid] = message
 
@@ -73,20 +59,7 @@ var init_fake_news = function(usr_img, title, article, true_label) {
         ],
         "rationale_validation": 0
     });
-            
-    // survey [{
-    //     "messages": [
-    //         "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
-    //         "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
-    //         "Is the article real or fake?"
-    //     ],
-    //     "validation":
-    //         "#real#fake"},
-    // {
-    //     "messages": [
-    //         "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
-    //     ]
-    // }];
+        
     chatbot.talk(survey_fake_news());
 };
 
@@ -109,11 +82,11 @@ var survey_validate = function(input) {
         return flag;
     } else if ("rationale_validation" in q) {
         var words = input.split(' ');
+        var flag = false;
         if (words.length > 5) {
-            return true;
-        } else {
-            return false;
-        }
+            flag = true;
+        } 
+        return flag;
     } else return true;
 
 };
@@ -127,19 +100,8 @@ var survey_next_question = function(url) {
     return ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"\"/>")];
 };
 
-// var survey_fake_news_old = function(title, article) {
-//     return [
-//         "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
-//         "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
-//         "Is the article real or fake?",
-//         "buttons:#real#fake",
-//         "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
-//     ];
-// }
-
 var survey_fake_news = function() {
     survey_qid += 1;
-    // if (survey_qid >= survey.length) return "";
     return survey[survey_qid].messages;
 }
 
@@ -173,7 +135,7 @@ var return_results_fake_news_rationale = function() {
     return "NO RESULTS FOR THIS QUESTION"
 }
 
-var reutrn_results = function() {
+var return_results = function() {
     if (answers.length >0 ){
         return answers[0];
     }
