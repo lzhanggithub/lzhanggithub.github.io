@@ -46,8 +46,14 @@ var init = function(url, usr_img) {
 };
 
 var init_fake_news = function(usr_img, title, article, true_label) {
+    // Draw the progress bar
+    update_progress();
+
+    // Set image
     user_image = usr_img;
-    console.log("hello from init check");
+    
+    
+    // Set messages
     survey.push({
         "messages": [
             "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
@@ -112,6 +118,12 @@ var survey_fake_news = function() {
 var survey_repeat_question = function() {
     return text_unsure.concat(survey[survey_qid].messages);
 };
+
+var update_progress = function() {
+    var elem = document.getElementById("myBar");
+    elem.style.width = (curr_task/total_tasks) * 100 + '%';
+    elem.innerHTML = curr_task + '/' + total_tasks;
+}
 
 var increment_progress = function() {
     // increment the progress bar
