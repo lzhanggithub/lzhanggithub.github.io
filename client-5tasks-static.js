@@ -2,11 +2,6 @@ var userid = "";
 var answers = [];
 var task_completed = false; 
 
-// progress bar vars
-var curr_task = 0;
-var total_tasks = 50;
-var interval_milestone = 10;
-
 var start_time = 0;
 var last_time = 0;
 var pauses = [];
@@ -19,7 +14,6 @@ var text_more = ["OK. Can you tell me more?|Uh huh, and?|Good, go ahead.|Well...
 var text_explain = ["Please explain what you think.|Can you explain why?|Could you please give me the reason?"];
 var task_finished = false;
 // Avatar phase links
-var phase_counter = 0;
 var phase_links = [
     "https://main--lucent-meerkat-9cdc65.netlify.app/",
     "https://main--euphonious-cascaron-f1295a.netlify.app/",
@@ -28,15 +22,13 @@ var phase_links = [
     "https://62a4c5b4cf7d9c3bad511d3b--adorable-ganache-e90d04.netlify.app/"
 
 ]
-curr_phase_link = phase_links[0];
+curr_phase_link = phase_links[4];
 
 
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {    
     if ( survey_validate(message) ) {
         answers[survey_qid] = message;
-        if (!task_finished) {
-            increment_progress();
-        }
+
         if (answers.length < survey.length) chatbot.talk(survey_next_question());
         else {
             task_finished = true;
@@ -136,27 +128,6 @@ var update_progress = function() {
     document.getElementById("anchr").setAttribute('href', curr_phase_link);
 }
 
-var increment_progress = function() {
-    // increment the progress bars
-    var elem = document.getElementById("myBar");   
-//     console.log("curr task: " + curr_task);
-    if (curr_task < total_tasks) {
-        curr_task+=1;
-        if((curr_task % interval_milestone) === 0 && curr_task != 0) {
-            phase_counter+=1;
-            
-            curr_phase_link = phase_links[phase_counter];
-            console.log("MILESTONE TRIGGERED");
-            // update link    
-            
-            alert("You have reached a milestone! There are new features available to edit your avatar. Go check them out by clicking the EDIT AVATAR button!");
-        }
-      elem.style.width = (curr_task/total_tasks) * 100 + '%';
-      elem.innerHTML = curr_task + '/' + total_tasks;
-    } else {
-//       console.log("task done");
-    }
-}
 var submit = function() { 
     var res = {answers: answers}; 
     return answers;

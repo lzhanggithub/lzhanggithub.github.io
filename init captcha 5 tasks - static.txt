@@ -14,6 +14,13 @@ https://lzhanggithub.github.io/client.css
   <button onclick="save_avatar()" id="avatar_button" style='display:block;margin-top:10px;'>Save avatar</button>
 </div>
 
+<div id="progress-bar">
+   <div class="w3-light-grey-static">
+    <div id="myBar" class="w3-container w3-green" style="height:24px;width:0%">
+    </div>
+  </div>
+</div>
+
 <div id="container">
          <div id="history-container">
             <table id="chat-history"></table>

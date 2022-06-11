@@ -39,6 +39,11 @@
       /* background-color:#f1f1f1!important */
     }
 
+    .w3-light-grey-static{
+      background-color:#f1f1f1!important
+    }
+
+
     .w3-container{
       padding:0.01em 16px;
     }
