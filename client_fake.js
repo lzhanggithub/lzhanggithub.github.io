@@ -160,6 +160,8 @@ var increment_progress = function() {
             curr_phase_link = phase_links[phase_counter];
             console.log("MILESTONE TRIGGERED");
             // update link
+
+            show_modal();
         }
       curr_task+=1;
       console.log(curr_task);
@@ -170,6 +172,19 @@ var increment_progress = function() {
     }
 
     console.log("curr_task: " + curr_task)
+}
+
+var show_modal = function() {
+    // Get modal element
+    var modal = document.getElementById("myModal");
+    // Get the close element that closes the modal
+    var close = document.getElementsByClassName("close")[0];
+    modal.style.display = "block";
+
+    // When the user clicks on <span> (x), close the modal
+    close.onclick = function() {
+        modal.style.display = "none";
+    }
 }
 
 var submit = function() { 
@@ -452,3 +467,10 @@ function parse_query_string() {
     }
     return query_string;
 }
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
