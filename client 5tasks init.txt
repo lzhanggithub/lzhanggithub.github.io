@@ -9,7 +9,7 @@ https://lzhanggithub.github.io/client.css
 // HTML 
 
 <div id="edit_avatar">
-  <a target="_blank" id="anchr"style='display:block;margin-top:10px;'><button class="close">Edit Avatar</button></a>
+  <a target="_blank" id="anchr"style='display:block;margin-top:10px;'><button>Edit Avatar</button></a>
   <textarea id="avatar_url" width = 300px style='display:block;margin-top:10px;' placeholder="Paste new avatar link here and click save!"></textarea>
   <button onclick="save_avatar()" id="avatar_button" style='display:block;margin-top:10px;'>Save avatar</button>
 </div>
@@ -18,17 +18,6 @@ https://lzhanggithub.github.io/client.css
    <div class="w3-light-grey">
     <div id="myBar" class="w3-container w3-green" style="height:24px;width:0%">
     </div>
-  </div>
-</div>
-
-<!-- The Modal -->
-<div id="myModal" id="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div id="model-text">
-    	<p>You have reached a milestone! There are new features available to edit your avatar. Go check them out!</p>
-    </div>
-    <a target="_blank" id="anchr"><button id="close">Edit Avatar</button></a>
   </div>
 </div>
 

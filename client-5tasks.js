@@ -1,10 +1,6 @@
 var userid = "";
 var answers = [];
-var task_completed = false;
-
-// Modal elements
-var modal;
-var close_m;
+var task_completed = false; 
 
 // progress bar vars
 var curr_task = 0;
@@ -40,7 +36,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
         answers[survey_qid] = message;
 
         console.log(answers)
-        console.log(survey_qid)
+        console.log("survey_qid: " + survey_qid)
         console.log(survey.length-1)
         if (!task_finished) {
             increment_progress();
@@ -130,7 +126,6 @@ var update_progress = function() {
 }
 
 var increment_progress = function() {
-    console.log("hello from increment");
     // increment the progress bars
     var elem = document.getElementById("myBar");   
     curr_task+=1;
@@ -143,20 +138,14 @@ var increment_progress = function() {
             console.log("MILESTONE TRIGGERED");
             // update link    
             
-            show_modal();
+            alert("You have reached a milestone! There are new features available to edit your avatar. Go check them out by clicking the EDIT AVATAR button!");
         }
-      console.log(curr_task);
       elem.style.width = (curr_task/total_tasks) * 100 + '%';
       elem.innerHTML = curr_task + '/' + total_tasks;
     } else {
       console.log("task done");
     }
 }
-
-var show_modal = function() {
-    modal.style.display = "block";
-}
-
 var submit = function() { 
     var res = {answers: answers}; 
     return answers;
@@ -199,11 +188,6 @@ var loading = function() {              // show loading animation
 
     // Re-render progress bar
     update_progress();
-
-
-    // get modal elements
-    modal = document.getElementById("myModal");
-    close_m = document.getElementById("close");
 }
 
 var buttons_cell = document.createElement("div");
@@ -422,18 +406,4 @@ function parse_query_string() {
         }
     }
     return query_string;
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-
-close_m.onclick = function(event) {
-    console.log("close clicked: " + close_m.tagName);
-    if (event.target == modal) {
-        modal.style.display = "none";
-      }
 }
