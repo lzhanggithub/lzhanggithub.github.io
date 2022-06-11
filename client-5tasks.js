@@ -60,7 +60,7 @@ var add_to_survey= function(url1){
 var init = function(url, usr_img) {
     task_completed = false;
     user_image = usr_img;
-    var splitted_urls = url.split(";");
+    var splitted_urls = url.split("{EOF}");
     console.log(url);
     console.log(splitted_urls);
     splitted_urls.forEach(add_to_survey)
