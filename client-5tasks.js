@@ -34,10 +34,6 @@ curr_phase_link = phase_links[0];
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {    
     if ( survey_validate(message) ) {
         answers[survey_qid] = message;
-
-        console.log(answers)
-        console.log("survey_qid: " + survey_qid)
-        console.log(survey.length-1)
         if (!task_finished) {
             increment_progress();
         }
@@ -52,12 +48,30 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 },show_message = function(message){bubble(message);});
 
 var add_to_survey= function(url1){
-    console.log(url1);
+//     console.log(url1);
 
     if (url1.includes("https")) {
         survey.push({
             "messages":  ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url1,"\"/>")]
         });
+    } else if (url1.includes("You can vote on the best avatar by typing the number for example 1")) {
+        //
+        survey.push({
+            "messages":  
+            ["image 1","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/12aeab11-9c2c-43a5-b7cd-2d8b7c8ddc02.svg","\"/>"),
+             "image 2","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/db402a24-358f-4f39-913e-77d301e5b001.svg","\"/>"),
+             "image 3","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/296f5126-7790-4207-8ad5-0c0ade174b57.svg","\"/>"),
+             "image 4","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/2fd9beef-aa32-498c-a7c4-ecdbae06c2d5.svg","\"/>"),
+             "image 5","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/07231630-189f-47a8-953f-202b0cff6c78.svg","\"/>"),
+             "image 6","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/161f12cc-7202-4733-8aa4-c3a67b0bd9bf.svg","\"/>"),
+             "image 7","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/1feb224b-1e37-4f47-9423-33a872bae1d1.svg","\"/>"),
+             "image 8","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/646b6caf-c3b5-4617-8eb8-9c0bd154ae20.svg","\"/>"),
+             "image 9","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/98870fb1-1325-4b62-8bf3-78267ffa25c6.svg","\"/>"),
+             "image 10","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/b9deda19-3361-4acf-b844-f95e77312bc8.svg","\"/>"),
+             "image 11","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/a25d9186-ca85-4f39-938e-6cafbd547cf1.svg","\"/>")
+            ]
+        });
+        
     } else {
         survey.push({
             "messages":  [url1]
@@ -79,10 +93,7 @@ var save_avatar = function() {
 var init = function(url, usr_img) {
     task_finished = false;
     var splitted_urls = url.split("{EOF}");
-    console.log(url);
-    console.log(splitted_urls);
     splitted_urls.forEach(add_to_survey);
-    console.log(survey);
     chatbot.talk(survey_next_question());
 };
 
@@ -108,7 +119,7 @@ var survey_validate = function(input) {
 
 var survey_next_question = function() {
     survey_qid += 1;
-    console.log(survey[survey_qid].messages);
+//     console.log(survey[survey_qid].messages);
     
     return survey[survey_qid].messages;
 };
@@ -129,7 +140,7 @@ var increment_progress = function() {
     // increment the progress bars
     var elem = document.getElementById("myBar");   
     curr_task+=1;
-    console.log("curr task: " + curr_task);
+//     console.log("curr task: " + curr_task);
     if (curr_task < total_tasks) {
         if((curr_task % interval_milestone) === 0 && curr_task != 0) {
             phase_counter+=1;
@@ -143,7 +154,7 @@ var increment_progress = function() {
       elem.style.width = (curr_task/total_tasks) * 100 + '%';
       elem.innerHTML = curr_task + '/' + total_tasks;
     } else {
-      console.log("task done");
+//       console.log("task done");
     }
 }
 var submit = function() { 
