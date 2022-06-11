@@ -12,6 +12,7 @@ var last_time = 0;
 var pauses = [];
 var keys = [];
 
+var avatar_url = "https://qiusihang.github.io/ticktalkturk/res/default.png";
 var user_image = "https://qiusihang.github.io/ticktalkturk/res/default.png";
 var captcha_url = ""
 // var survey = [{"messages":["the first question"],"validation":"#the first"},{"messages":["the second question"],"validation":"#second"}];
@@ -51,7 +52,6 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 
 var init = function(url, usr_img) {
     task_completed = false;
-    user_image = usr_img;
     captcha_url = url;
     chatbot.talk(survey_next_question());
 };
@@ -88,7 +88,6 @@ var survey_next_question = function() {
     } else {
         return [captcha_url];
     }
-    
 };
 
 var survey_repeat_question = function() {

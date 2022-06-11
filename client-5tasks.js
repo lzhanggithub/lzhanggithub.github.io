@@ -78,7 +78,6 @@ var save_avatar = function() {
 
 var init = function(url, usr_img) {
     task_finished = false;
-    user_image = usr_img;
     var splitted_urls = url.split("{EOF}");
     console.log(url);
     console.log(splitted_urls);
@@ -144,10 +143,8 @@ var increment_progress = function() {
       elem.style.width = (curr_task/total_tasks) * 100 + '%';
       elem.innerHTML = curr_task + '/' + total_tasks;
     } else {
-      console.log("done");
+      console.log("task done");
     }
-
-    console.log("curr_task: " + curr_task)
 }
 
 var get_phase_link = function(){
