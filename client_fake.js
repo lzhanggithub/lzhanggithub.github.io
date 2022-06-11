@@ -21,6 +21,17 @@ var text_unsure = ["Sorry, I don\'t get it.|Sorry, what do you mean?|Sorry, I do
 var text_more = ["OK. Can you tell me more?|Uh huh, and?|Good, go ahead.|Well... it will be better if you can tell me more.|Cool, go ahead please.|And?|Hmm... anything else?|Nice, anything more?|Nice! I want to know more :)|And then?|Come on, nothing else?|Un huh, and?"]
 var text_explain = ["Please explain what you think.|Can you explain why?|Could you please give me the reason?"];
 
+// Avatar phase links
+var phase_counter = 0;
+var phase_links = [
+    "https://main--lucent-meerkat-9cdc65.netlify.app/",
+    "https://main--euphonious-cascaron-f1295a.netlify.app/",
+    "https://62a4c0f353f2f136d993449a--frabjous-stroopwafel-4a25ef.netlify.app/",
+    "https://image-bank-toloka.herokuapp.com/data/8e8298ea-5581-4d42-87e8-7a87920c8b60.svg"
+
+]
+var curr_phase_link = phase_links[0];
+
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {
     if ( survey_validate(message)) {
         answers[survey_qid] = message
@@ -120,6 +131,9 @@ var update_progress = function() {
     var elem = document.getElementById("myBar");
     elem.style.width = (curr_task/total_tasks) * 100 + '%';
     elem.innerHTML = curr_task + '/' + total_tasks;
+     
+    document.getElementById("anchr").setAttribute('href', curr_phase_link);
+
 }
 
 var increment_progress = function() {
@@ -129,7 +143,8 @@ var increment_progress = function() {
   
     if (curr_task < total_tasks) {
         if((total_tasks % interval_milestone) == 0 && curr_task != 0) {
-            
+            phase_counter+=1;
+            curr_phase_link = phase_links[phase_counter];
             console.log("MILESTONE TRIGGERED");
             // update link
         }
