@@ -11,6 +11,7 @@ https://qiusihang.github.io/ticktalkturk/style/client.css
 
 <a target="_blank" id="anchr">Edit Avatar</a>
 <textarea id="avatar_url" width = 300px></textarea>
+<button onclick="save_avatar()">Save avatar</button>
 
 <div id="progress-bar">
    <div class="w3-light-grey">
