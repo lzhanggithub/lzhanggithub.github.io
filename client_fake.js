@@ -59,14 +59,6 @@ var init = function(url, usr_img) {
 };
 
 var init_fake_news = function(user_img, title, article, true_label) {
-    // Set imagee
-    try {
-        var avatar_url = document.getElementById('avatar_url').value
-        user_image = avatar_url
-    } catch(err) {
-        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png";
-    } 
-    
     // Set messages
     survey.push({
         "messages": [
@@ -143,6 +135,8 @@ var update_progress = function() {
 }
 
 var save_avatar = function() {
+    console.log("hello from save")
+
     try {
         var avatar_url = document.getElementById('avatar_url').value;
         avatar_url = avatar_url;
@@ -150,6 +144,9 @@ var save_avatar = function() {
     } catch(err) {
         user_image = avatar_url;
     } 
+
+    console.log("edited avatar: " + document.getElementById('avatar_url').value)
+    console.log("new image: " + user_image)
 }
 
 var increment_progress = function() {
