@@ -1,0 +1,10 @@
+Description:
+
+This is the captcha micro-task. Please be patient and fill in the correct answers, each correct answer will be rewarded with a corresponding CREDIT. The images shown are rotated so be careful.
+
+To skip a task type down "skip" so you proceed to the next one.
+To edit your avatar, click on edit avatar button and a new window will show up with your avatar to modify. After modifying your avatar, click save and the page will give you a new link. Copy that link and paste it below the edit button in the Toloka page and then click save for your avatar to show.  
+
+Each task provided by Andrea (chat bot) is gonna be reviewed.
+Every 10 tasks you receive an upgrade for your avatar.   
+Don't refresh page or you will lose your progress.

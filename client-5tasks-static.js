@@ -2,6 +2,10 @@ var userid = "";
 var answers = [];
 var task_completed = false; 
 
+// progress bar vars
+var curr_task = 0;
+var total_tasks = 50;
+
 var start_time = 0;
 var last_time = 0;
 var pauses = [];
@@ -28,7 +32,9 @@ curr_phase_link = phase_links[4];
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {    
     if ( survey_validate(message) ) {
         answers[survey_qid] = message;
-
+        if (!task_finished) {
+            increment_progress();
+        }
         if (answers.length < survey.length) chatbot.talk(survey_next_question());
         else {
             task_finished = true;
@@ -128,6 +134,18 @@ var update_progress = function() {
     document.getElementById("anchr").setAttribute('href', curr_phase_link);
 }
 
+var increment_progress = function() {
+    // increment the progress bars
+    var elem = document.getElementById("myBar");   
+//     console.log("curr task: " + curr_task);
+    if (curr_task < total_tasks) {
+        curr_task+=1;
+        elem.style.width = (curr_task/total_tasks) * 100 + '%';
+        elem.innerHTML = curr_task + '/' + total_tasks;
+    } else {
+//       console.log("task done");
+    }
+}
 var submit = function() { 
     var res = {answers: answers}; 
     return answers;
