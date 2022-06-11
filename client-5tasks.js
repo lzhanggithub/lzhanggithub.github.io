@@ -25,7 +25,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
         console.log(answers)
         console.log("from take turn function");
 
-        if (survey_qid < survey.length) chatbot.talk(survey_next_question());
+        if (survey_qid <= survey.length) chatbot.talk(survey_next_question());
         else {
             chatbot.talk(["You have completed this task! now click submit to the next task "]);
             submit();
