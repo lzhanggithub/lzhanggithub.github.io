@@ -17,7 +17,7 @@ var survey = [];
 var text_unsure = ["Sorry, I don\'t get it.|Sorry, what do you mean?|Sorry, I don\'t understand.|Can you provide a valid answer?"];
 var text_more = ["OK. Can you tell me more?|Uh huh, and?|Good, go ahead.|Well... it will be better if you can tell me more.|Cool, go ahead please.|And?|Hmm... anything else?|Nice, anything more?|Nice! I want to know more :)|And then?|Come on, nothing else?|Un huh, and?"]
 var text_explain = ["Please explain what you think.|Can you explain why?|Could you please give me the reason?"];
-
+var task_finished = false;
 // Avatar phase links
 var phase_counter = 0;
 var phase_links = [
@@ -35,15 +35,24 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
     // this function is used for processing users message and then decide how chatbot should reply.
     // you should use function chatbot.talk(["text1","text2"]) to reply.
 //     if ( task_completed ) { chatbot.talk(["😀"]); return; }
+    try {
+        var avatar_url = document.getElementById('avatar_url').value
+        user_image = avatar_url
+    } catch(err) {
+        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png";
+    }
     if ( survey_validate(message) ) {
         answers[survey_qid] = message;
 
         console.log(answers)
         console.log(survey_qid)
         console.log(survey.length-1)
-
+        if (!task_finished) {
+            increment_progress();
+        }
         if (answers.length < survey.length) chatbot.talk(survey_next_question());
         else {
+            task_finished = true;
             chatbot.talk(["You have completed this task! now click submit to the next task "]);
             submit();
         }
@@ -67,9 +76,16 @@ var add_to_survey= function(url1){
 }
 
 var init = function(url, usr_img) {
-    task_completed = false;
+    task_finished = false;
     user_image = usr_img;
     var splitted_urls = url.split("{EOF}");
+    document.getElementById('avatar_url').value = user_image;
+    try {
+        var avatar_url = document.getElementById('avatar_url').value
+        user_image = avatar_url
+    } catch(err) {
+        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png";
+    }
     console.log(url);
     console.log(splitted_urls);
     splitted_urls.forEach(add_to_survey);
@@ -102,7 +118,7 @@ var survey_next_question = function() {
     console.log(survey[survey_qid].messages);
 
     // Increment progress bar
-    increment_progress();
+    
 
     try {
         var avatar_url = document.getElementById('avatar_url').value
