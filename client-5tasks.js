@@ -3,8 +3,8 @@ var answers = [];
 var task_completed = false;
 
 // Modal elements
-var modal = "";
-var close_m = "";
+var modal
+var close_m
 
 // progress bar vars
 var curr_task = 0;
@@ -203,7 +203,7 @@ var loading = function() {              // show loading animation
 
     // get modal elements
     modal = document.getElementById("myModal");
-    close_m = document.getElementsByClassName("close")[0];
+    close_m = document.getElementById("close");
 }
 
 var buttons_cell = document.createElement("div");
@@ -432,5 +432,6 @@ window.onclick = function(event) {
   }
 
 close_m.onclick = function() {
+    console.log("close clicked: " + close_m.tagName);
     modal.style.display = "none";
 }
