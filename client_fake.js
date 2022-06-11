@@ -12,7 +12,8 @@ var last_time = 0;
 var pauses = [];
 var keys = [];
 
-var user_image = "https://qiusihang.github.io/ticktalkturk/res/default.png";
+var avatar_url = "https://sihangqiu.com/ticktalkturk/res/default.png";
+var user_image =  "https://sihangqiu.com/ticktalkturk/res/default.png";
 // var survey = [{"messages":["the first question"],"validation":"#the first"},{"messages":["the second question"],"validation":"#second"}];
 // var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\"https://media.4-paws.org/1/4/e/a/14ea44c5fc3e0aa54688ec51ee5c8b1396d7f54c/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg\"/>"]}];
 var survey = [];
@@ -141,6 +142,16 @@ var update_progress = function() {
 
 }
 
+var update_avatar_img = function() {
+    try {
+        var avatar_url = document.getElementById('avatar_url').value;
+        avatar_url = avatar_url;
+        user_image = avatar_url;
+    } catch(err) {
+        user_image = avatar_url;
+    } 
+}
+
 var increment_progress = function() {
     console.log("hello from increment");
     // increment the progress bars
@@ -225,6 +236,7 @@ var loading = function() {              // show loading animation
     loading_cell.innerHTML = "<div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div>";
     to_bottom();
     update_progress();
+    update_avatar_img();
 }
 
 var buttons_cell = document.createElement("div");
