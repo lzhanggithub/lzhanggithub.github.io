@@ -273,7 +273,7 @@ var checkbox_button = function(e) {
 
 
 
-var chatbot_image = "https://qiusihang.github.io/ticktalkturk/res/chatbot.png";
+var chatbot_image = "https://image-bank-toloka.herokuapp.com/data/e6e77e48-0596-4bb5-902f-68a4074acfb9.svg";
 var profile_image = function(username) {
     if ( username == "__you__") {
         return "<div style=\"float:right\" class=\"profile-image\"><img class=\"user-image\" height=\"100%\" src=\""+user_image+"\" /></div>";
