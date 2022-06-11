@@ -104,6 +104,14 @@ var survey_next_question = function() {
     // Increment progress bar
     increment_progress();
 
+    try {
+        avatar_url = document.getElementById('avatar_url').value
+    } catch(err) {
+        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png";
+    } finally {
+        user_image = avatar_url;
+    }
+    
     return survey[survey_qid].messages;
 };
 
