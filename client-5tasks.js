@@ -37,7 +37,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 var add_to_survey= function(url1){
     console.log(url1);
     survey.push({
-        "messages": ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url1,"/>")]
+        "messages":  ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url1,"\"/>")]
     });
 }
 
@@ -73,6 +73,7 @@ var survey_validate = function(input) {
 
 var survey_next_question = function() {
     survey_qid += 1;
+    console.log(survey[survey_qid].messages);
     return survey[survey_qid].messages;
 };
 
