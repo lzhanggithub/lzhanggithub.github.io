@@ -3,8 +3,8 @@ var answers = [];
 var task_completed = false;
 
 // Modal elements
-var modal
-var close_m
+var modal;
+var close_m;
 
 // progress bar vars
 var curr_task = 0;
@@ -431,7 +431,9 @@ window.onclick = function(event) {
     }
   }
 
-close_m.onclick = function() {
+close_m.onclick = function(event) {
     console.log("close clicked: " + close_m.tagName);
-    modal.style.display = "none";
+    if (event.target == modal) {
+        modal.style.display = "none";
+      }
 }

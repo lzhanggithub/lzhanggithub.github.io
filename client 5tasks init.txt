@@ -22,13 +22,13 @@ https://lzhanggithub.github.io/client.css
 </div>
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myModal" id="modal">
   <!-- Modal content -->
   <div class="modal-content">
     <div id="model-text">
     	<p>You have reached a milestone! There are new features available to edit your avatar. Go check them out!</p>
     </div>
-    <a target="_blank" id="anchr"><button class="close">Edit Avatar</button></a>
+    <a target="_blank" id="anchr"><button id="close">Edit Avatar</button></a>
   </div>
 </div>
 
