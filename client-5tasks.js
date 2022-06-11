@@ -21,12 +21,11 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
     if ( survey_validate(message) ) {
         answers[survey_qid] = message;
 
-        console.log(message);
         console.log(answers)
         console.log(survey_qid)
-        console.log(survey.length)
+        console.log(survey.length-1)
 
-        if (survey_qid <= survey.length-1) chatbot.talk(survey_next_question());
+        if (answers.length < survey.length) chatbot.talk(survey_next_question());
         else {
             chatbot.talk(["You have completed this task! now click submit to the next task "]);
             submit();
@@ -36,6 +35,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 },show_message = function(message){bubble(message);});
 
 var add_to_survey= function(url){
+    console.log(url);
     survey.push({
         "messages": ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")]
     });
