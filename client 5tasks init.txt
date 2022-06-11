@@ -4,8 +4,7 @@ https://qiusihang.github.io/ticktalkturk/js/jquery.js
 https://qiusihang.github.io/ticktalkturk/js/chatbot.js
 https://lzhanggithub.github.io/client-5tasks.js
 //CSS:
-https://qiusihang.github.io/ticktalkturk/style/client.css
-
+https://lzhanggithub.github.io/client.css
 
 // HTML 
 
