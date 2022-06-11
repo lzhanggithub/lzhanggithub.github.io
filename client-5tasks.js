@@ -131,7 +131,7 @@ var increment_progress = function() {
     var elem = document.getElementById("myBar");   
   
     if (curr_task < total_tasks) {
-        if((total_tasks % interval_milestone) == 0 && curr_task != 0) {
+        if((curr_task % interval_milestone) === 0 && curr_task != 0) {
             phase_counter+=1;
             
             curr_phase_link = phase_links[phase_counter];

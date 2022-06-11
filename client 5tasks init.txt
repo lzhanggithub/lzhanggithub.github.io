@@ -15,7 +15,6 @@ https://qiusihang.github.io/ticktalkturk/style/client.css
   <button onclick="save_avatar()" id="avatar_button" style='display:block;margin-top:10px;'>Save avatar</button>
 </div>
 
-
 <div id="progress-bar">
    <div class="w3-light-grey">
     <div id="myBar" class="w3-container w3-green" style="height:24px;width:0%">
