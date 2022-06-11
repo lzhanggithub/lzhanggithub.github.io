@@ -13,7 +13,10 @@ https://lzhanggithub.github.io/client.css
 #####################HTML###############################
 
 <div id="progress-bar">
-   progress bar
+   <div class="w3-light-grey">
+    <div id="myBar" class="w3-container w3-green" style="height:24px;width:0%">
+    </div>
+  </div>
 </div>
 
 <div id="container">
@@ -31,15 +34,11 @@ https://lzhanggithub.github.io/client.css
 
 
 
-##################################### JS ################################
 
-var number = 0;
+##################################### JS ################################
 
 exports.Task = extend(TolokaHandlebarsTask, function (options) {
   TolokaHandlebarsTask.call(this, options);
-//   console.log(options['task']['input_values']['comment']);
-//   console.log(options['task']['input_values']['usr_avatar']);
-//   console.log(options); //Initialize the survey
 }, {
   onRender: function() {
     // DOM element for task is formed (available via #getDOMElement()) 
@@ -61,15 +60,11 @@ exports.Task = extend(TolokaHandlebarsTask, function (options) {
         this.setSolutionOutputValue("rationale",rationale);
         console.log(solution);
         submit();
-        number = number + 1;
-        console.log(number)
         return errors || TolokaHandlebarsTask.prototype.validate.call(this, solution);
-    }
-,
+    },
   onDestroy: function() {
     // Task is completed. Global resources can be released (if used)
   }
-
 });
 
 function extend(ParentClass, constructorFunction, prototypeHash) {
@@ -83,6 +78,8 @@ function extend(ParentClass, constructorFunction, prototypeHash) {
   }
   return constructorFunction;
 }
+
+
 
 ########################## var nammes ##################################
 Input
