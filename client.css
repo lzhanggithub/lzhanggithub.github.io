@@ -11,6 +11,12 @@
         background:#e6e6e6;
     }
 
+    .line {
+      height: 24px;
+      background:
+       repeating-linear-gradient(to right, white, black 20%)
+    }
+
     #progress-bar{
         position: absolute;
         top: 10px;
