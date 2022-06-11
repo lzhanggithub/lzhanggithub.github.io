@@ -24,7 +24,7 @@ var phase_links = [
     "https://main--lucent-meerkat-9cdc65.netlify.app/",
     "https://main--euphonious-cascaron-f1295a.netlify.app/",
     "https://62a4c0f353f2f136d993449a--frabjous-stroopwafel-4a25ef.netlify.app/",
-    "https://image-bank-toloka.herokuapp.com/data/8e8298ea-5581-4d42-87e8-7a87920c8b60.svg",
+    "https://62a4bf56cf7d9c375b511c9b--polite-cannoli-d21a80.netlify.app/",
     "https://62a4c5b4cf7d9c3bad511d3b--adorable-ganache-e90d04.netlify.app/"
 
 ]
