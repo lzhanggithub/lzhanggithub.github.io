@@ -48,7 +48,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 },show_message = function(message){bubble(message);});
 
 var add_to_survey= function(url1){
-    console.log(url1);
+//     console.log(url1);
 
     if (url1.includes("https")) {
         survey.push({
@@ -119,7 +119,7 @@ var survey_validate = function(input) {
 
 var survey_next_question = function() {
     survey_qid += 1;
-    console.log(survey[survey_qid].messages);
+//     console.log(survey[survey_qid].messages);
     
     return survey[survey_qid].messages;
 };
@@ -140,7 +140,7 @@ var increment_progress = function() {
     // increment the progress bars
     var elem = document.getElementById("myBar");   
     curr_task+=1;
-    console.log("curr task: " + curr_task);
+//     console.log("curr task: " + curr_task);
     if (curr_task < total_tasks) {
         if((curr_task % interval_milestone) === 0 && curr_task != 0) {
             phase_counter+=1;
@@ -154,7 +154,7 @@ var increment_progress = function() {
       elem.style.width = (curr_task/total_tasks) * 100 + '%';
       elem.innerHTML = curr_task + '/' + total_tasks;
     } else {
-      console.log("task done");
+//       console.log("task done");
     }
 }
 var submit = function() { 
