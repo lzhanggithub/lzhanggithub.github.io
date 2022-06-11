@@ -58,7 +58,7 @@ var add_to_survey= function(url1){
         //
         survey.push({
             "messages":  
-            ["image 1","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/12aeab11-9c2c-43a5-b7cd-2d8b7c8ddc02.svg","\"/>"),
+            ["You can vote on the best avatar by typing the number for example 1","image 1","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/12aeab11-9c2c-43a5-b7cd-2d8b7c8ddc02.svg","\"/>"),
              "image 2","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/db402a24-358f-4f39-913e-77d301e5b001.svg","\"/>"),
              "image 3","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/296f5126-7790-4207-8ad5-0c0ade174b57.svg","\"/>"),
              "image 4","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/2fd9beef-aa32-498c-a7c4-ecdbae06c2d5.svg","\"/>"),
