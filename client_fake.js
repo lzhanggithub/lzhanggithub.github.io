@@ -59,13 +59,12 @@ var init = function(url, usr_img) {
 
 var init_fake_news = function(user_img, title, article, true_label) {
     // Set imagee
-    avatar_url = document.getElementById('avatar_url').value
-    if(!avatar_url) {
-        // Set default
-        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png"
-    } else {
-        user_image = avatar_url
-        
+    try {
+        avatar_url = document.getElementById('avatar_url').value
+    } catch(err) {
+        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png";
+    } finally {
+        user_image = avatar_url;
     }
     
     // Set messages
