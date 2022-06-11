@@ -4,7 +4,7 @@ var task_completed = false;
 
 // Modal elements
 var modal = "";
-var close = "";
+var close_m = "";
 
 // progress bar vars
 var curr_task = 0;
@@ -207,7 +207,7 @@ var loading = function() {              // show loading animation
 
     // get modal elements
     modal = document.getElementById("myModal");
-    close = document.getElementsByClassName("close")[0];
+    close_m = document.getElementsByClassName("close")[0];
 }
 
 var buttons_cell = document.createElement("div");
@@ -435,6 +435,6 @@ window.onclick = function(event) {
     }
   }
 
-close.onclick = function() {
+close_m.onclick = function() {
     modal.style.display = "none";
 }
