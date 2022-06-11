@@ -134,6 +134,7 @@ var increment_progress = function() {
     // increment the progress bars
     var elem = document.getElementById("myBar");   
     curr_task+=1;
+    console.log("curr task: " + curr_task);
     if (curr_task < total_tasks) {
         if((curr_task % interval_milestone) === 0 && curr_task != 0) {
             phase_counter+=1;
@@ -150,11 +151,6 @@ var increment_progress = function() {
     } else {
       console.log("task done");
     }
-}
-
-var get_phase_link = function(){
-
-    return 
 }
 
 var show_modal = function() {
