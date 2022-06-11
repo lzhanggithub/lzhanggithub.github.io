@@ -128,9 +128,9 @@ var increment_progress = function() {
     var elem = document.getElementById("myBar");   
   
     if (curr_task < total_tasks) {
-        if((curr_task % total_tasks) == 0) {
+        if((total_task % interval_milestone) == 0 && curr_task != 0) {
+            
             console.log("MILESTONE TRIGGERED");
-
             // update link
         }
       curr_task+=1;
