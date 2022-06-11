@@ -105,12 +105,11 @@ var survey_next_question = function() {
     increment_progress();
 
     try {
-        avatar_url = document.getElementById('avatar_url').value
+        var avatar_url = document.getElementById('avatar_url').value
+        user_image = avatar_url
     } catch(err) {
         user_image = "https://sihangqiu.com/ticktalkturk/res/default.png";
-    } finally {
-        user_image = avatar_url;
-    }
+    } 
     
     return survey[survey_qid].messages;
 };
