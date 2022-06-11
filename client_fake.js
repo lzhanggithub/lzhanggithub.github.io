@@ -142,7 +142,7 @@ var update_progress = function() {
 
 }
 
-var update_avatar_img = function() {
+var save_avatar = function() {
     try {
         var avatar_url = document.getElementById('avatar_url').value;
         avatar_url = avatar_url;
@@ -236,7 +236,6 @@ var loading = function() {              // show loading animation
     loading_cell.innerHTML = "<div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div>";
     to_bottom();
     update_progress();
-    update_avatar_img();
 }
 
 var buttons_cell = document.createElement("div");
