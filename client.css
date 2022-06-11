@@ -37,7 +37,8 @@
     }
 
     .w3-container{
-      padding:0.01em 16px
+      padding:0.01em 16px;
+      background-image: repeating-linear-gradient(to right, black, #f1f1f1 0.5%, #f1f1f1 20%);
     }
 
     .w3-green{
