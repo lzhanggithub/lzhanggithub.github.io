@@ -2,6 +2,10 @@ var userid = "";
 var answers = [];
 var task_completed = false;
 
+// Modal elements
+var modal = "";
+var close = "";
+
 // progress bar vars
 var curr_task = 0;
 var total_tasks = 50;
@@ -155,16 +159,7 @@ var get_phase_link = function(){
 }
 
 var show_modal = function() {
-    // Get modal element
-    var modal = document.getElementById("myModal");
-    // Get the close element that closes the modal
-    var close = document.getElementsByClassName("close")[0];
     modal.style.display = "block";
-
-    // When the user clicks on <span> (x), close the modal
-    close.onclick = function() {
-        modal.style.display = "none";
-    }
 }
 
 var submit = function() { 
@@ -209,6 +204,11 @@ var loading = function() {              // show loading animation
 
     // Re-render progress bar
     update_progress();
+
+
+    // get modal elements
+    modal = document.getElementById("myModal");
+    close = document.getElementsByClassName("close")[0];
 }
 
 var buttons_cell = document.createElement("div");
@@ -435,3 +435,7 @@ window.onclick = function(event) {
       modal.style.display = "none";
     }
   }
+
+close.onclick = function() {
+    modal.style.display = "none";
+}
