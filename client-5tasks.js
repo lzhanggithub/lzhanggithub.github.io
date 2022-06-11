@@ -133,7 +133,7 @@ var increment_progress = function() {
     console.log("hello from increment");
     // increment the progress bars
     var elem = document.getElementById("myBar");   
-  
+    curr_task+=1;
     if (curr_task < total_tasks) {
         if((curr_task % interval_milestone) === 0 && curr_task != 0) {
             phase_counter+=1;
@@ -144,7 +144,6 @@ var increment_progress = function() {
             
             show_modal();
         }
-      curr_task+=1;
       console.log(curr_task);
       elem.style.width = (curr_task/total_tasks) * 100 + '%';
       elem.innerHTML = curr_task + '/' + total_tasks;
