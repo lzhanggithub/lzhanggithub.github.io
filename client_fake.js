@@ -4,8 +4,8 @@ var task_completed = false;
 
 // progress bar vars
 var curr_task = 0;
-var total_tasks = 10;
-var interval_milestone = 2;
+var total_tasks = 50;
+var interval_milestone = 10;
 
 var start_time = 0;
 var last_time = 0;
@@ -135,8 +135,6 @@ var update_progress = function() {
 }
 
 var save_avatar = function() {
-    console.log("hello from save")
-
     try {
         var avatar_url = document.getElementById('avatar_url').value;
         avatar_url = avatar_url;
@@ -150,28 +148,25 @@ var save_avatar = function() {
 }
 
 var increment_progress = function() {
-    console.log("hello from increment");
     // increment the progress bars
     var elem = document.getElementById("myBar");   
-  
+    curr_task+=1;
+    console.log("curr task: " + curr_task);
     if (curr_task < total_tasks) {
-        if((total_tasks % interval_milestone) == 0 && curr_task != 0) {
+        if((curr_task % interval_milestone) === 0 && curr_task != 0) {
             phase_counter+=1;
+            
             curr_phase_link = phase_links[phase_counter];
             console.log("MILESTONE TRIGGERED");
-            // update link
-
-            show_modal();
+            // update link    
+            
+            alert("You have reached a milestone! There are new features available to edit your avatar. Go check them out by clicking the EDIT AVATAR button!");
         }
-      curr_task+=1;
-      console.log(curr_task);
       elem.style.width = (curr_task/total_tasks) * 100 + '%';
       elem.innerHTML = curr_task + '/' + total_tasks;
     } else {
-      console.log("done");
+      console.log("task done");
     }
-
-    console.log("curr_task: " + curr_task)
 }
 
 var show_modal = function() {
@@ -313,7 +308,7 @@ var checkbox_button = function(e) {
 
 
 
-var chatbot_image = "https://qiusihang.github.io/ticktalkturk/res/chatbot.png";
+var chatbot_image = "https://image-bank-toloka.herokuapp.com/data/42acb1f6-1b15-4077-ba32-1edd31e0ab78.svg";
 var profile_image = function(username) {
     if ( username == "__you__") {
         return "<div style=\"float:right\" class=\"profile-image\"><img class=\"user-image\" height=\"100%\" src=\""+user_image+"\" /></div>";
