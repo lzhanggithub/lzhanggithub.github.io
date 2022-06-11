@@ -31,16 +31,7 @@ var phase_links = [
 curr_phase_link = phase_links[0];
 
 
-var chatbot = new Chatbot(taketurn = function(chatbot, message) {
-    // this function is used for processing users message and then decide how chatbot should reply.
-    // you should use function chatbot.talk(["text1","text2"]) to reply.
-//     if ( task_completed ) { chatbot.talk(["😀"]); return; }
-    try {
-        var avatar_url = document.getElementById('avatar_url').value
-        user_image = avatar_url
-    } catch(err) {
-        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png";
-    }
+var chatbot = new Chatbot(taketurn = function(chatbot, message) {    
     if ( survey_validate(message) ) {
         answers[survey_qid] = message;
 
@@ -75,17 +66,20 @@ var add_to_survey= function(url1){
 
 }
 
+var save_avatar = function() {
+    try {
+        var avatar_url = document.getElementById('avatar_url').value;
+        avatar_url = avatar_url;
+        user_image = avatar_url;
+    } catch(err) {
+        user_image = avatar_url;
+    } 
+}
+
 var init = function(url, usr_img) {
     task_finished = false;
     user_image = usr_img;
     var splitted_urls = url.split("{EOF}");
-    document.getElementById('avatar_url').value = user_image;
-    try {
-        var avatar_url = document.getElementById('avatar_url').value
-        user_image = avatar_url
-    } catch(err) {
-        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png";
-    }
     console.log(url);
     console.log(splitted_urls);
     splitted_urls.forEach(add_to_survey);
@@ -116,16 +110,6 @@ var survey_validate = function(input) {
 var survey_next_question = function() {
     survey_qid += 1;
     console.log(survey[survey_qid].messages);
-
-    // Increment progress bar
-    
-
-    try {
-        var avatar_url = document.getElementById('avatar_url').value
-        user_image = avatar_url
-    } catch(err) {
-        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png";
-    } 
     
     return survey[survey_qid].messages;
 };
