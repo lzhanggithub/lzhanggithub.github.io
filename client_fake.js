@@ -27,7 +27,8 @@ var phase_links = [
     "https://main--lucent-meerkat-9cdc65.netlify.app/",
     "https://main--euphonious-cascaron-f1295a.netlify.app/",
     "https://62a4c0f353f2f136d993449a--frabjous-stroopwafel-4a25ef.netlify.app/",
-    "https://image-bank-toloka.herokuapp.com/data/8e8298ea-5581-4d42-87e8-7a87920c8b60.svg"
+    "https://62a4bf56cf7d9c375b511c9b--polite-cannoli-d21a80.netlify.app/",
+    "https://62a4c5b4cf7d9c3bad511d3b--adorable-ganache-e90d04.netlify.app/"
 
 ]
 var curr_phase_link = phase_links[0];
@@ -56,10 +57,16 @@ var init = function(url, usr_img) {
     chatbot.talk(survey_next_question(url));
 };
 
-var init_fake_news = function(usr_img, title, article, true_label) {
+var init_fake_news = function(user_img, title, article, true_label) {
     // Set imagee
-    user_image = usr_img;
-    
+    avatar_url = document.getElementById('avatar_url').value
+    if(!avatar_url) {
+        // Set default
+        user_image = "https://sihangqiu.com/ticktalkturk/res/default.png"
+    } else {
+        user_image = avatar_url
+        
+    }
     
     // Set messages
     survey.push({
