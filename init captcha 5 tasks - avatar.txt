@@ -2,7 +2,7 @@
 //JS:
 https://qiusihang.github.io/ticktalkturk/js/jquery.js
 https://qiusihang.github.io/ticktalkturk/js/chatbot.js
-https://lzhanggithub.github.io/client-5tasks.js
+https://lzhanggithub.github.io/client-5tasks-avatar.js
 //CSS:
 https://lzhanggithub.github.io/client.css
 
