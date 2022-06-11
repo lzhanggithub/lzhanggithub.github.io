@@ -4,7 +4,8 @@ var task_completed = false;
 
 // progress bar vars
 var curr_task = 0;
-var total_tasks = 10;
+var total_tasks = 60;
+var interval_milestone = 15;
 
 var start_time = 0;
 var last_time = 0;
