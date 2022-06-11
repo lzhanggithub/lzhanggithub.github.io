@@ -8,10 +8,7 @@ var pauses = [];
 var keys = [];
 
 var user_image = "https://qiusihang.github.io/ticktalkturk/res/default.png";
-var captcha_url = ""
-// var survey = [{"messages":["the first question"],"validation":"#the first"},{"messages":["the second question"],"validation":"#second"}];
-var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\"https://media.4-paws.org/1/4/e/a/14ea44c5fc3e0aa54688ec51ee5c8b1396d7f54c/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg\"/>"]}];
-// var survey = "";
+var survey = [];
 var text_unsure = ["Sorry, I don\'t get it.|Sorry, what do you mean?|Sorry, I don\'t understand.|Can you provide a valid answer?"];
 var text_more = ["OK. Can you tell me more?|Uh huh, and?|Good, go ahead.|Well... it will be better if you can tell me more.|Cool, go ahead please.|And?|Hmm... anything else?|Nice, anything more?|Nice! I want to know more :)|And then?|Come on, nothing else?|Un huh, and?"]
 var text_explain = ["Please explain what you think.|Can you explain why?|Could you please give me the reason?"];
@@ -23,28 +20,42 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 //     if ( task_completed ) { chatbot.talk(["😀"]); return; }
     if ( survey_validate(message) ) {
         answers[survey_qid] = message;
-        console.log(task_completed);
-        console.log(message);
+
         console.log(answers)
-        console.log("from take turn function");
-        
-//         if (!task_completed) chatbot.talk(survey_next_question());
-//         else {
+        console.log(survey_qid)
+        console.log(survey.length-1)
+
+        if (answers.length < survey.length) chatbot.talk(survey_next_question());
+        else {
             chatbot.talk(["You have completed this task! now click submit to the next task "]);
             submit();
-            task_completed = true;
-//             document.getElementById("submit").style.display = "block";
-//             document.getElementById("message").disabled = true;
-//         }
+        }
     }
     else chatbot.talk(survey_repeat_question());
 },show_message = function(message){bubble(message);});
 
+var add_to_survey= function(url1){
+    console.log(url1);
+
+    if (url1.includes("https")) {
+        survey.push({
+            "messages":  ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url1,"\"/>")]
+        });
+    } else {
+        survey.push({
+            "messages":  [url1]
+        });
+    }
+
+}
 
 var init = function(url, usr_img) {
     task_completed = false;
     user_image = usr_img;
-    captcha_url = url;
+    var splitted_urls = url.split(";");
+    console.log(url);
+    console.log(splitted_urls);
+    splitted_urls.forEach(add_to_survey)
     chatbot.talk(survey_next_question());
 };
 
@@ -70,17 +81,8 @@ var survey_validate = function(input) {
 
 var survey_next_question = function() {
     survey_qid += 1;
-    console.log(survey_qid);
-    console.log("from survey next q");
-//     if ( survey_qid >= survey.length ) return "";
-    console.log(survey);
-//     survey[survey_qid].messages = ["<img style=\"max-width:500px;width:100%\" src=\"".concat(captcha_url,"\"/>")];
-    if (captcha_url.includes("https")) {
-        return ["<img style=\"max-width:500px;width:100%\" src=\"".concat(captcha_url,"\"/>")];
-    } else {
-        return [captcha_url];
-    }
-    
+    console.log(survey[survey_qid].messages);
+    return survey[survey_qid].messages;
 };
 
 var survey_repeat_question = function() {
