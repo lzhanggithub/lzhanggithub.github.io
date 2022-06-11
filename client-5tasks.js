@@ -5,7 +5,7 @@ var task_completed = false;
 // progress bar vars
 var curr_task = 0;
 var total_tasks = 50;
-var interval_milestone = 25;
+var interval_milestone = 10;
 
 var start_time = 0;
 var last_time = 0;
@@ -110,6 +110,10 @@ var increment_progress = function() {
     var elem = document.getElementById("myBar");   
   
     if (curr_task < total_tasks) {
+        if((total_tasks % interval_milestone) == 0 && curr_task != 0) {
+            console.log("MILESTONE TRIGGERED");
+            // update link      
+        }
       curr_task+=1;
       console.log(curr_task);
       elem.style.width = (curr_task/total_tasks) * 100 + '%';
