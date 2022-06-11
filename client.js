@@ -2,6 +2,11 @@ var userid = "";
 var answers = [];
 var task_completed = false;
 
+// progress bar vars
+var curr_task = 0;
+var total_tasks = 50;
+var interval_milestone = 15;
+
 var start_time = 0;
 var last_time = 0;
 var pauses = [];
@@ -22,6 +27,9 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
     // you should use function chatbot.talk(["text1","text2"]) to reply.
 //     if ( task_completed ) { chatbot.talk(["😀"]); return; }
     if ( survey_validate(message) ) {
+        // Increment progress bar
+        increment_progress();
+        
         answers[survey_qid] = message;
         console.log(task_completed);
         console.log(message);
@@ -87,6 +95,29 @@ var survey_repeat_question = function() {
     return text_unsure.concat(survey[survey_qid].messages);
 };
 
+var update_progress = function() {
+    var elem = document.getElementById("myBar");
+    elem.style.width = (curr_task/total_tasks) * 100 + '%';
+    elem.innerHTML = curr_task + '/' + total_tasks;
+}
+
+var increment_progress = function() {
+    console.log("hello from increment");
+    // increment the progress bars
+    var elem = document.getElementById("myBar");   
+  
+    if (curr_task < total_tasks) {
+      curr_task+=1;
+      console.log(curr_task);
+      elem.style.width = (curr_task/total_tasks) * 100 + '%';
+      elem.innerHTML = curr_task + '/' + total_tasks;
+    } else {
+      console.log("done");
+    }
+
+    console.log("curr_task: " + curr_task)
+}
+
 
 var submit = function() { 
     var res = {answers: answers}; 
@@ -127,6 +158,9 @@ var loading = function() {              // show loading animation
     loading_cell = row.insertCell();
     loading_cell.innerHTML = "<div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div>";
     to_bottom();
+
+    // Re-render progress bar
+    update_progress();
 }
 
 var buttons_cell = document.createElement("div");
