@@ -37,7 +37,7 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 var add_to_survey= function(url1){
     console.log(url1);
 
-    if (captcha_url.includes("https")) {
+    if (url1.includes("https")) {
         survey.push({
             "messages":  ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url1,"\"/>")]
         });
