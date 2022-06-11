@@ -63,7 +63,8 @@ var init = function(url, usr_img) {
     var splitted_urls = url.split("{EOF}");
     console.log(url);
     console.log(splitted_urls);
-    splitted_urls.forEach(add_to_survey)
+    splitted_urls.forEach(add_to_survey);
+    console.log(survey);
     chatbot.talk(survey_next_question());
 };
 
