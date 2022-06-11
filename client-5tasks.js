@@ -34,10 +34,10 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
     else chatbot.talk(survey_repeat_question());
 },show_message = function(message){bubble(message);});
 
-var add_to_survey= function(url){
-    console.log(url);
+var add_to_survey= function(url1){
+    console.log(url1);
     survey.push({
-        "messages": ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")]
+        "messages": ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url1,"/>")]
     });
 }
 
@@ -45,6 +45,8 @@ var init = function(url, usr_img) {
     task_completed = false;
     user_image = usr_img;
     var splitted_urls = url.split(";");
+    console.log(url);
+    console.log(splitted_urls);
     splitted_urls.forEach(add_to_survey)
     chatbot.talk(survey_next_question());
 };
