@@ -36,9 +36,17 @@ var chatbot = new Chatbot(taketurn = function(chatbot, message) {
 
 var add_to_survey= function(url1){
     console.log(url1);
-    survey.push({
-        "messages":  ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url1,"\"/>")]
-    });
+
+    if (captcha_url.includes("https")) {
+        survey.push({
+            "messages":  ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url1,"\"/>")]
+        });
+    } else {
+        survey.push({
+            "messages":  [url1]
+        });
+    }
+
 }
 
 var init = function(url, usr_img) {
