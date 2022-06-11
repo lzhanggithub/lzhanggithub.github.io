@@ -2,50 +2,71 @@ var userid = "";
 var answers = [];
 var task_completed = false;
 
+// progress bar vars
+var curr_task = 0;
+var total_tasks = 10;
+
 var start_time = 0;
 var last_time = 0;
 var pauses = [];
 var keys = [];
 
 var user_image = "https://qiusihang.github.io/ticktalkturk/res/default.png";
-var captcha_url = ""
 // var survey = [{"messages":["the first question"],"validation":"#the first"},{"messages":["the second question"],"validation":"#second"}];
-var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\"https://media.4-paws.org/1/4/e/a/14ea44c5fc3e0aa54688ec51ee5c8b1396d7f54c/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg\"/>"]}];
-// var survey = "";
+// var survey = [{"messages":["<img style=\"max-width:500px;width:100%\" src=\"https://media.4-paws.org/1/4/e/a/14ea44c5fc3e0aa54688ec51ee5c8b1396d7f54c/Kaninchen%20im%20Freigehege%20%282%29-4440x3072.jpg\"/>"]}];
+var survey = [];
+
 var text_unsure = ["Sorry, I don\'t get it.|Sorry, what do you mean?|Sorry, I don\'t understand.|Can you provide a valid answer?"];
 var text_more = ["OK. Can you tell me more?|Uh huh, and?|Good, go ahead.|Well... it will be better if you can tell me more.|Cool, go ahead please.|And?|Hmm... anything else?|Nice, anything more?|Nice! I want to know more :)|And then?|Come on, nothing else?|Un huh, and?"]
 var text_explain = ["Please explain what you think.|Can you explain why?|Could you please give me the reason?"];
 
-
 var chatbot = new Chatbot(taketurn = function(chatbot, message) {
-    // this function is used for processing users message and then decide how chatbot should reply.
-    // you should use function chatbot.talk(["text1","text2"]) to reply.
-//     if ( task_completed ) { chatbot.talk(["😀"]); return; }
-    if ( survey_validate(message) ) {
-        answers[survey_qid] = message;
+    if ( survey_validate(message)) {
+        answers[survey_qid] = message
+
         console.log(task_completed);
         console.log(message);
         console.log(answers)
-        console.log("from take turn function");
-        
-//         if (!task_completed) chatbot.talk(survey_next_question());
-//         else {
+
+        if (survey_qid < survey.length - 1) chatbot.talk(survey_fake_news());
+        else {
             chatbot.talk(["You have completed this task! now click submit to the next task "]);
-            submit();
+            //submit();
             task_completed = true;
-//             document.getElementById("submit").style.display = "block";
-//             document.getElementById("message").disabled = true;
-//         }
+        }
     }
     else chatbot.talk(survey_repeat_question());
 },show_message = function(message){bubble(message);});
 
 
 var init = function(url, usr_img) {
-    task_completed = false;
     user_image = usr_img;
-    captcha_url = url;
-    chatbot.talk(survey_next_question());
+    chatbot.talk(survey_next_question(url));
+};
+
+var init_fake_news = function(usr_img, title, article, true_label) {
+    // Set imagee
+    user_image = usr_img;
+    
+    
+    // Set messages
+    survey.push({
+        "messages": [
+            "Welcome to this fake news detection task. In this task we ask you to read an article, label it as fake or real, and give reasoning for your decision.\n\nFor instructions please read the description.",
+            "The title of the article is: \n" + title + "\n\nHere is the link to the article:\n" + article,
+            "Is the article real or fake?"
+        ],
+        "validation":
+            "#real#fake"});
+
+    survey.push({
+        "messages": [
+            "Give reasoning for your answer (provide phrases and/or external source that back your decision)"
+        ],
+        "rationale_validation": 0
+    });
+        
+    chatbot.talk(survey_fake_news());
 };
 
 var survey_qid = -1;
@@ -65,39 +86,89 @@ var survey_validate = function(input) {
             })
         });
         return flag;
+    } else if ("rationale_validation" in q) {
+        var words = input.split(' ');
+        var flag = false;
+        if (words.length > 5) {
+            flag = true;
+        } 
+        return flag;
     } else return true;
+
 };
 
-var survey_next_question = function() {
+var survey_next_question = function(url) {
     survey_qid += 1;
-    console.log(survey_qid);
-    console.log("from survey next q");
-//     if ( survey_qid >= survey.length ) return "";
-    console.log(survey);
-//     survey[survey_qid].messages = ["<img style=\"max-width:500px;width:100%\" src=\"".concat(captcha_url,"\"/>")];
-    if (captcha_url.includes("https")) {
-        return ["<img style=\"max-width:500px;width:100%\" src=\"".concat(captcha_url,"\"/>")];
-    } else {
-        return [captcha_url];
-    }
-    
+    if ( survey_qid >= survey.length ) return "";
+    ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")];
+    console.log(["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"/>")]);
+    console.log(survey[survey_qid].messages);
+    return ["<img style=\"max-width:500px;width:100%\" src=\"".concat(url,"\"/>")];
 };
+
+var survey_fake_news = function() {
+    survey_qid += 1;
+    return survey[survey_qid].messages;
+}
 
 var survey_repeat_question = function() {
     return text_unsure.concat(survey[survey_qid].messages);
 };
 
-
-var submit = function() { 
-    var res = {answers: answers}; 
-    return answers;
-//     console.log(res); 
-    /*Do what you want to do with the survey results here!*/ 
+var update_progress = function() {
+    var elem = document.getElementById("myBar");
+    elem.style.width = (curr_task/total_tasks) * 100 + '%';
+    elem.innerHTML = curr_task + '/' + total_tasks;
 }
 
-var reutrn_results = function() {
+var increment_progress = function() {
+    console.log("hello from increment");
+    // increment the progress bars
+    var elem = document.getElementById("myBar");   
+  
+    if (curr_task < total_tasks) {
+      curr_task+=1;
+      console.log(curr_task);
+      elem.style.width = (curr_task/total_tasks) * 100 + '%';
+      elem.innerHTML = curr_task + '/' + total_tasks;
+    } else {
+      console.log("done");
+    }
+
+    console.log("curr_task: " + curr_task)
+}
+
+var submit = function() { 
+    // Increment progress
+    increment_progress();
+
+    var res = {answers: answers}; 
+    console.log(res); 
+    /*Do what you want to do with the survey results here!*/ 
+
+    return answers;
+
+}
+
+var return_results_fake_news_label = function() {
+    if (answers.length > 0) {
+        console.log("from return label " + answers[answers.length - 2]);
+        return answers[answers.length - 2];
+    }
+    return "NO RESULTS FOR THIS QUESTION"
+}
+
+var return_results_fake_news_rationale = function() {
+    if (answers.length > 0) {
+        console.log("from return rationale " + answers[answers.length - 1]);
+        return answers[answers.length - 1];
+    }
+    return "NO RESULTS FOR THIS QUESTION"
+}
+
+var return_results = function() {
     if (answers.length >0 ){
-        return answers
+        return answers[0];
     }
     return "NO RESULT FOUND FOR THIS QUESTION"
 }
@@ -127,6 +198,7 @@ var loading = function() {              // show loading animation
     loading_cell = row.insertCell();
     loading_cell.innerHTML = "<div class=\"lds-ellipsis\"><div></div><div></div><div></div><div></div></div>";
     to_bottom();
+    update_progress();
 }
 
 var buttons_cell = document.createElement("div");

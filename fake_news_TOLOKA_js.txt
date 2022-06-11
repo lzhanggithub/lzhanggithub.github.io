@@ -1,13 +1,20 @@
-//Initialization in Toloka
-//JS:
+##### Libraries #####
+JS:
+
+$TOLOKA_ASSETS/js/toloka-handlebars-templates.js
 https://qiusihang.github.io/ticktalkturk/js/jquery.js
 https://qiusihang.github.io/ticktalkturk/js/chatbot.js
-https://lzhanggithub.github.io/client.js
-//CSS:
-https://qiusihang.github.io/ticktalkturk/style/client.css
+https://lzhanggithub.github.io/client_fake.js
 
+CSS:
 
-// HTML 
+https://lzhanggithub.github.io/client.css
+
+#####################HTML###############################
+
+<div id="progress-bar">
+   progress bar
+</div>
 
 <div id="container">
          <div id="history-container">
@@ -16,34 +23,46 @@ https://qiusihang.github.io/ticktalkturk/style/client.css
          <div id="message-container"><textarea id="message" name="message" onkeydown="onKeyDown(event)" placeholder="Type your message here" rows="1"></textarea></div>
          <div id="send-button" onclick="click_send()"><img src="https://qiusihang.github.io/ticktalkturk/style/send.png" width="20px" style="vertical-align:middle"/></div>
          <div id="message-cover">Please reply the chatbot by selecting the option(s).</div>
-            {{!-- <div style="font-size:16px;border:0px;background:rgba(0,0,0,0);color:#666666"><b>SUBMIT</b></div> --}}
+         <div id="submit" style="cursor:pointer" onclick="submit()">
+            <div style="font-size:16px;border:0px;background:rgba(0,0,0,0);color:#666666"><b>SUBMIT</b></div>
             <textarea id="chat-answer" name="chat-answer" style="display:none"></textarea>
          </div>
       </div>
 
-//JS
+
+
+##################################### JS ################################
+
+var number = 0;
 
 exports.Task = extend(TolokaHandlebarsTask, function (options) {
   TolokaHandlebarsTask.call(this, options);
-//   window.onload = 
+//   console.log(options['task']['input_values']['comment']);
+//   console.log(options['task']['input_values']['usr_avatar']);
+//   console.log(options); //Initialize the survey
 }, {
   onRender: function() {
-    
-    console.log(this.getOptions()['task']['input_values']['imageURL']);
-      init(this.getOptions()['task']['input_values']['imageURL'],"https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimages5.fanpop.com%2Fimage%2Fphotos%2F30200000%2Favatar-avatar-30214841-1440-900.jpg&f=1&nofb=1");
-      // location.reload();
     // DOM element for task is formed (available via #getDOMElement()) 
+    init_fake_news(
+    this.getOptions()['task']['input_values']['usr_avatar'],
+    this.getOptions()['task']['input_values']['title'],
+    this.getOptions()['task']['input_values']['article'],
+    this.getOptions()['task']['input_values']['true_label']);
   },
   validate: function(solution) {
         var errors = null;
 
         // If no words are selected, we show an error message.
-        var res = reutrn_results();
-        console.log(res);
-        this.setSolutionOutputValue("result",res[res.length-1]);
+        var pred_label = return_results_fake_news_label();
+        var rationale = return_results_fake_news_rationale()
+        console.log("from toloko label "  + pred_label);
+        console.log("from toloko rat "  + rationale);
+        this.setSolutionOutputValue("pred_label",pred_label);
+        this.setSolutionOutputValue("rationale",rationale);
         console.log(solution);
         submit();
-
+        number = number + 1;
+        console.log(number)
         return errors || TolokaHandlebarsTask.prototype.validate.call(this, solution);
     }
 ,
@@ -65,8 +84,15 @@ function extend(ParentClass, constructorFunction, prototypeHash) {
   return constructorFunction;
 }
 
+########################## var nammes ##################################
+Input
 
+title:string:required
+article:string:required
+true_label:string
+usr_avatar:string
 
-// Input fields
-imageURL type : string/URL
-result type : string
+output
+
+rationale:string:required
+pred_label:string:required

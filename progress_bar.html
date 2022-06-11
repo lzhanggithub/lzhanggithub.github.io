@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+  <h2>Dynamic Progress Bar with Labels</h2>
+  <p>Label outside of the progress bar:</p>
+
+	
+  <div class="w3-light-grey">
+    <div id="myBar" class="w3-container w3-green" style="height:24px;width:0%">
+    </div>
+  </div>
+
+  <p id="myP">Added <span id="demo">0</span> of 10 tasks</p>
+
+  <button class="w3-button w3-light-grey" onclick="move()">Upload Photos</button> 
+</div>
+
+<script>
+var number = 0;
+var curr_task = 0;
+var total_tasks=10;
+
+function move() {
+  	var elem = document.getElementById("myBar");   
+  
+    if (curr_task < total_tasks) {
+      curr_task+=1;
+      console.log(curr_task);
+      elem.style.width = (curr_task/total_tasks) * 100 + '%';
+      elem.innerHTML = curr_task + '/' + total_tasks;
+    } else {
+      console.log("done");
+    }
+}
+</script>
+
+</body>
+</html>
