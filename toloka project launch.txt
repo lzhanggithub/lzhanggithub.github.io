@@ -1,16 +1,50 @@
+DEFAULT:
+description:
+
+This is the captcha micro-task. Please be patient and fill in the correct answers, each correct answer will be rewarded with a corresponding CREDIT. The images shown are rotated so be careful.
+
+Instruction:
+Every task includes 5 captchas we ask you to interpret.  Several captchas are faded and rotated, so please be careful when answering them. 
+NO SPACES BETWEEN CHARACTERS
+After 5 capthas, you can hit submit to go the the next set of tasks.
+To skip a task type down "skip" so you proceed to the next one.
+Each task provided by Andrea (chat bot) is going to be be reviewed.  
+After performing the micro-task, we have a quick survey that we would like you to answer. You will get CREDIT for answering this survey
+Don't refresh page or you will lose your progress.
+
+
+AVATAR
+
 Description:
 
 This is the captcha micro-task. Please be patient and fill in the correct answers, each correct answer will be rewarded with a corresponding CREDIT. The images shown are rotated so be careful.
 
 In addition, we have incorporated avatars in which you can edit and save your personal avatar. At the end, there is a voting competition for the best avatar made. The avatar with the most votes will win some extra CREDIT.
 
-Instruction:
-
-Every task includes 5 captchas we ask you to interpret.  Several captchas are faded and rotated, so please be careful when answering them. After 5 capthas, you can hit submit to go the the next set of tasks.
+AVATAR INSTRUCTION:
+Every task includes 5 captchas we ask you to interpret.  Several captchas are faded and rotated, so please be careful when answering them. 
+NO SPACES BETWEEN CHARACTERS
+After 5 capthas, you can hit submit to go the the next set of tasks.
 To skip a task type down "skip" so you proceed to the next one.
 To edit your avatar, click on edit avatar button and a new window will show up with your avatar to modify. After modifying your avatar, click save and the page will give you a new link. Copy that link and paste it below the edit button in the Toloka page and then click save for your avatar to show.  
-Every 10 tasks you receive extra modifications to beautify your avatar.
+For every 10 tasks you receive extra modifications to beautify your avatar.
 Each task provided by Andrea (chat bot) is going to be be reviewed.  
 After performing the micro-task, we have a quick survey that we would like you to answer. You will get CREDIT for answering this survey
 In the end, you can vote for the best avatar.
 Don't refresh page or you will lose your progress.
+
+POOL SETTINGS
+advanced --> keep task onRender
+Audience --> English
+Quality Control --> Ban if number of responses is to fast (4)
+Price per task suite 0.05
+
+Quality control
+
+fast responses (s)
+Recent task suites to use 5 Minimum time per task suite 15
+If number of responses >= 4 then ban on requester
+
+Majority vot
+Accept as majority 2 Recent tasks to use 5
+If correct responses < (50%) then ban on requester
