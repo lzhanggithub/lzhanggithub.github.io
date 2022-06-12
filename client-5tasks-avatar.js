@@ -58,17 +58,14 @@ var add_to_survey= function(url1){
         //
         survey.push({
             "messages":  
-            ["You can vote on the best avatar by typing the number for example 1","image 1","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/12aeab11-9c2c-43a5-b7cd-2d8b7c8ddc02.svg","\"/>"),
-             "image 2","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/db402a24-358f-4f39-913e-77d301e5b001.svg","\"/>"),
-             "image 3","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/296f5126-7790-4207-8ad5-0c0ade174b57.svg","\"/>"),
-             "image 4","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/2fd9beef-aa32-498c-a7c4-ecdbae06c2d5.svg","\"/>"),
-             "image 5","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/07231630-189f-47a8-953f-202b0cff6c78.svg","\"/>"),
-             "image 6","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/161f12cc-7202-4733-8aa4-c3a67b0bd9bf.svg","\"/>"),
-             "image 7","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/1feb224b-1e37-4f47-9423-33a872bae1d1.svg","\"/>"),
-             "image 8","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/646b6caf-c3b5-4617-8eb8-9c0bd154ae20.svg","\"/>"),
-             "image 9","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/98870fb1-1325-4b62-8bf3-78267ffa25c6.svg","\"/>"),
-             "image 10","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/b9deda19-3361-4acf-b844-f95e77312bc8.svg","\"/>"),
-             "image 11","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://image-bank-toloka.herokuapp.com/data/a25d9186-ca85-4f39-938e-6cafbd547cf1.svg","\"/>")
+            ["You can vote on the best avatar by typing the number for example 1","image 1","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://lzhanggithub.github.io/dataset/avatars/image_1.svg","\"/>"),
+             "image 2","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://lzhanggithub.github.io/dataset/avatars/image_2.svg","\"/>"),
+             "image 3","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://lzhanggithub.github.io/dataset/avatars/image_3.svg","\"/>"),
+             "image 4","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://lzhanggithub.github.io/dataset/avatars/image_4.svg","\"/>"),
+             "image 5","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://lzhanggithub.github.io/dataset/avatars/image_5.svg","\"/>"),
+             "image 6","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://lzhanggithub.github.io/dataset/avatars/image_6.svg","\"/>"),
+             "image 7","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://lzhanggithub.github.io/dataset/avatars/image_7.svg","\"/>"),
+             "image 8","<img style=\"max-width:500px;width:100%\" src=\"".concat("https://lzhanggithub.github.io/dataset/avatars/image_8.svg","\"/>")
             ]
         });
         
@@ -264,7 +261,7 @@ var checkbox_button = function(e) {
 
 
 
-var chatbot_image = "https://image-bank-toloka.herokuapp.com/data/42acb1f6-1b15-4077-ba32-1edd31e0ab78.svg";
+var chatbot_image = "https://lzhanggithub.github.io/dataset/avatars/andrea.svg";
 var profile_image = function(username) {
     if ( username == "__you__") {
         return "<div style=\"float:right\" class=\"profile-image\"><img class=\"user-image\" height=\"100%\" src=\""+user_image+"\" /></div>";
